@@ -62,7 +62,7 @@
             </div>
         </div>
         <div class="d-flex align-items-center gap-3 pt-5">
-            &copy; 2024 The Artisan Culinar Group. All rights reserved.
+            &copy; {{date('Y')}} Artisan Kuliner Group. All rights reserved.
         </div>
     </div>
 

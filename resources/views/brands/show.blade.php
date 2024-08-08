@@ -1,4 +1,15 @@
 @extends('layouts.app')
+@section('seo')
+    @php
+        $seo = \App\Models\Meta::all()->keyBy('page');
+    @endphp
+    @include('partials.seo', [
+        'title' => $brand->title ?? setting('seo.seo_title'),
+        'description' => $brand->meta_desc ?? setting('seo.seo_des'),
+        'image' => strlen($brand->bg_image) > 2 ? Voyager::image($brand->bg_image) : Voyager::image(setting('seo.seo_img')),
+        'keywords' => $brand->meta_key ?? setting('seo.seo_key'),
+    ])
+@endsection
 @section('content')
 <section>
     <div class="container-fluid p-0 position-relative overflow-auto">

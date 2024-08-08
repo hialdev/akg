@@ -1,4 +1,15 @@
 @extends('layouts.app')
+@section('seo')
+    @php
+        $seo = \App\Models\Meta::all()->keyBy('page');
+    @endphp
+    @include('partials.seo', [
+        'title' => $seo->get('event')->title ?? setting('seo.seo_title'),
+        'description' => $seo->get('event')->description ?? setting('seo.seo_des'),
+        'image' => strlen($seo->get('event')->image) > 2 ? Voyager::image($seo->get('event')->image) : Voyager::image(setting('seo.seo_img')),
+        'keywords' => $seo->get('event')->keywords ?? setting('seo.seo_key'),
+    ])
+@endsection
 @section('content')
 <section class="py-5">
     <div class="container">

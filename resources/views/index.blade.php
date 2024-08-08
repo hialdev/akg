@@ -1,4 +1,15 @@
 @extends('layouts.app')
+@section('seo')
+    @php
+        $seo = \App\Models\Meta::all()->keyBy('page');
+    @endphp
+    @include('partials.seo', [
+        'title' => $seo->get('home')->title ?? setting('seo.seo_title'),
+        'description' => $seo->get('home')->description ?? setting('seo.seo_des'),
+        'image' => strlen($seo->get('home')->image) > 2 ? Voyager::image($seo->get('home')->image) : Voyager::image(setting('seo.seo_img')),
+        'keywords' => $seo->get('home')->keywords ?? setting('seo.seo_key'),
+    ])
+@endsection
 @section('content')
 <section>
     <div class="position-relative">

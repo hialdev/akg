@@ -1,4 +1,15 @@
 @extends('layouts.app')
+@section('seo')
+    @php
+        $seo = \App\Models\Meta::all()->keyBy('page');
+    @endphp
+    @include('partials.seo', [
+        'title' => $seo->get('contact')->title ?? setting('seo.seo_title'),
+        'description' => $seo->get('contact')->description ?? setting('seo.seo_des'),
+        'image' => strlen($seo->get('contact')->image) > 2 ? Voyager::image($seo->get('contact')->image) : Voyager::image(setting('seo.seo_img')),
+        'keywords' => $seo->get('contact')->keywords ?? setting('seo.seo_key'),
+    ])
+@endsection
 @section('content')
 <img src="{{Voyager::image(setting('content.sep_img'))}}" alt="Image Separator" class="w-100 d-block">
 <section class="py-5">

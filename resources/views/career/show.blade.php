@@ -1,4 +1,15 @@
 @extends('layouts.app')
+@section('seo')
+    @php
+        $seo = \App\Models\Meta::all()->keyBy('page');
+    @endphp
+    @include('partials.seo', [
+        'title' => $career->title ?? setting('seo.seo_title'),
+        'description' => $career->meta_desc ?? setting('seo.seo_des'),
+        'image' => strlen($career->bg_image) > 2 ? Voyager::image($career->bg_image) : Voyager::image(setting('seo.seo_img')),
+        'keywords' => $career->meta_key ?? setting('seo.seo_key'),
+    ])
+@endsection
 @section('content')
 
 <section class="py-5">
