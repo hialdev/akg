@@ -14,11 +14,11 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
     public function index(){
-        $hero = Jumbotron::where('used',1)->latest()->first();
+        $heros = Jumbotron::where('used',1)->latest()->get();
         $brands = Brand::all();
         $news = News::limit(4)->get();
 
-        return view('index', compact('brands','news', 'hero'));
+        return view('index', compact('brands','news', 'heros'));
     }
 
     public function about(){

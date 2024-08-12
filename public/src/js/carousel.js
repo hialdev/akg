@@ -15,6 +15,17 @@ $('.news-carousel').owlCarousel({
     }
 });
 
+$('.hero-carousel').owlCarousel({
+    loop:true,
+    margin:0,
+    items:1,
+    autoplay:true,
+    autoplayTimeout:4000,
+    autoplayHoverPause:false,
+    dots:false,
+    nav:false,
+});
+
 $('.news-page-carousel').owlCarousel({
     loop:true,
     margin:10,

@@ -1,13 +1,22 @@
 <header>
     <div class="d-none d-md-block">
         @if (Route::currentRouteName() == 'home')
-        <nav class="menu-box position-absolute" style="z-index: 999">
-            @include('partials.menu', ['brand_color' => $brand_color])
-            <button class="search-button btn text-warning p-0 m-0 d-flex align-items-center justify-content-center" style="color: {{Route::is('brand.show') ? '#fff': ''}} !important">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
-                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="m21 21l-4.343-4.343m0 0A8 8 0 1 0 5.343 5.343a8 8 0 0 0 11.314 11.314" />
-                </svg>
-            </button>
+        <nav class="menu-box position-absolute d-flex align-items-center justify-content-between m-1 p-2 px-4" style="z-index: 999">
+            <a href="{{route('home')}}" class="text-decoration-none d-flex align-items-center justify-center">
+                @if (strlen(setting('site.logo')) > 2)
+                    <img src="{{Voyager::image(setting('site.logo'))}}" alt="Logo AKG Gold" class="d-block" style="{{Route::is('brand.show') ? 'filter:brightness(1000%)' : ''}};max-height:4em;">
+                @else
+                    <img src="{{env('APP_URL')}}/src/images/logo/logo-akg-gold.png" alt="Logo AKG Gold" class="d-block" style="{{Route::is('brand.show') ? 'filter:brightness(1000%)' : ''}};max-height:4em;">
+                @endif  
+            </a>
+            <div class="d-flex align-items-center gap-5">
+                @include('partials.menu', ['brand_color' => $brand_color])
+                <button class="search-button btn text-warning p-0 m-0 d-flex align-items-center justify-content-center" style="color: {{Route::is('brand.show') ? '#fff': ''}} !important">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="m21 21l-4.343-4.343m0 0A8 8 0 1 0 5.343 5.343a8 8 0 0 0 11.314 11.314" />
+                    </svg>
+                </button>
+            </div>
         </nav>
         @else
         <nav class="d-flex align-items-center justify-content-between p-1 px-3 akg-prm-bg" style="z-index: 999; background: {{$brand_color}} !important">

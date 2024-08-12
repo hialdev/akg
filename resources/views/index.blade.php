@@ -12,22 +12,21 @@
 @endsection
 @section('content')
 <section>
-    <div class="position-relative">
-        <div class="position-absolute top-0 start-0 end-0 bottom-0" style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.58) 48.01%, rgba(210, 210, 210, 0.00) 100%);">
-            <div class="container-fluid h-100">
-                <div class="row h-100 align-items-center">
-                    <div class="col-lg-4">
-                        <div class="logo-box">
-                            <img src="{{Voyager::image(setting('site.logo'))}}" alt="Logo Artisan Kuliner Group" class="d-block">
+    <div class="hero-carousel owl-carousel owl-theme">
+        @foreach ($heros as $hero)
+        <div class="position-relative">
+            <div class="position-absolute top-0 start-0 end-0 bottom-0" style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.58) 48.01%, rgba(210, 210, 210, 0.00) 100%);">
+                <div class="container-fluid h-100">
+                    <div class="row h-100 align-items-end">
+                        <div class="col-lg-4 p-5">
+                            <h1 class="text-white">{{$hero->title}}</h1>
                         </div>
-                    </div>
-                    <div class="col-lg-8">
-                        <h1 class="text-white">{{setting('content.home_hero_title')}}</h1>
                     </div>
                 </div>
             </div>
+            <img src="{{Voyager::image($hero->image)}}" alt="Image Hero Jumbotron AKG" class="d-block w-100 image-hero" style="max-height: 100vh; object-fit:cover;">
         </div>
-        <img src="{{Voyager::image($hero->image)}}" alt="Image Hero Jumbotron AKG" class="d-block w-100 image-hero">
+        @endforeach
     </div>
 </section>
 <section class="py-5" id="explore">
