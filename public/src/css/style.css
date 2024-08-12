@@ -6,7 +6,7 @@
 
 * {
   /* Apply custom scrollbar styles to the whole body */
-  scrollbar-color: #D5A129 #14262C;
+  scrollbar-color: #fafafa #e9e9e9;
   scrollbar-width: thin;
 }
 
@@ -231,6 +231,18 @@
 @media (max-width: 767px) {
   .brand-box {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.brand-map-box {
+  display: grid;
+  grid-template-columns: repeat(auto, 1fr); /* 4 kolom */
+  gap: 5px;
+  justify-items: center;
+}
+@media (max-width: 767px) {
+  .brand-map-box {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 

@@ -6,7 +6,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-4 p-5">
                     <h3 class="akg-prm">{{setting('content.home_brand_title')}}</h3>
-                    <hr class="divider">
+                    <hr class="divider" style="background: {{$brand_color}} !important">
                     <p class="text-secondary">{{setting('content.home_hero_desc')}}</p>
                 </div>
                 <div class="col-lg-8">

@@ -28,27 +28,27 @@
                 </ul>
                 <div class="d-flex align-items-center gap-2">
                     @if (setting('social-media.smlink_fb'))
-                    <a href="{{url(setting('social-media.smlink_fb'))}}" target="_blank" class="d-flex align-items-center akg-sec-bg text-white p-2">
+                    <a href="{{url(setting('social-media.smlink_fb'))}}" target="_blank" class="d-flex align-items-center akg-sec-bg text-white p-2" style="background: {{Route::is('brand.show') ? $brand_color : ''}} !important">
                         <span class="iconify" data-icon="bi:facebook" data-inline="false"></span>
                     </a>
                     @endif
                     @if (setting('social-media.smlink_twitter'))
-                    <a href="{{url(setting('social-media.smlink_twitter'))}}" target="_blank" class="d-flex align-items-center akg-sec-bg text-white p-2">
+                    <a href="{{url(setting('social-media.smlink_twitter'))}}" target="_blank" class="d-flex align-items-center akg-sec-bg text-white p-2" style="background: {{Route::is('brand.show') ? $brand_color : ''}} !important">
                         <span class="iconify" data-icon="bi:twitter" data-inline="false"></span>
                     </a>
                     @endif
                     @if (setting('social-media.smlink_ig'))
-                    <a href="{{url(setting('social-media.smlink_ig'))}}" target="_blank" class="d-flex align-items-center akg-sec-bg text-white p-2">
+                    <a href="{{url(setting('social-media.smlink_ig'))}}" target="_blank" class="d-flex align-items-center akg-sec-bg text-white p-2" style="background: {{Route::is('brand.show') ? $brand_color : ''}} !important">
                         <span class="iconify" data-icon="bi:instagram" data-inline="false"></span>
                     </a>
                     @endif
                     @if (setting('social-media.smlink_in'))
-                    <a href="{{url(setting('social-media.smlink_in'))}}" target="_blank" class="d-flex align-items-center akg-sec-bg text-white p-2">
+                    <a href="{{url(setting('social-media.smlink_in'))}}" target="_blank" class="d-flex align-items-center akg-sec-bg text-white p-2" style="background: {{Route::is('brand.show') ? $brand_color : ''}} !important">
                         <span class="iconify" data-icon="bi:linkedin" data-inline="false"></span>
                     </a>
                     @endif
                     @if (setting('social-media.smlink_yt'))
-                    <a href="{{url(setting('social-media.smlink_yt'))}}" target="_blank" class="d-flex align-items-center akg-sec-bg text-white p-2">
+                    <a href="{{url(setting('social-media.smlink_yt'))}}" target="_blank" class="d-flex align-items-center akg-sec-bg text-white p-2" style="background: {{Route::is('brand.show') ? $brand_color : ''}} !important">
                         <span class="iconify" data-icon="bi:youtube" data-inline="false"></span>
                     </a>
                     @endif
@@ -66,5 +66,5 @@
         </div>
     </div>
 
-    <img src="{{env('APP_URL')}}/src/images/decor/decor-footer.svg" alt="Footer" class="d-block" style="width:40%; position: absolute; bottom:0; right:0">
+    <img src="{{env('APP_URL')}}/src/images/decor/decor-footer.svg" alt="Footer" class="d-block" style="filter:{{Route::is('brand.show') ? 'grayscale(100)' : ''}};width:40%; position: absolute; bottom:0; right:0">
 </footer>

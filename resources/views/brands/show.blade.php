@@ -10,6 +10,9 @@
         'keywords' => $brand->meta_key ?? setting('seo.seo_key'),
     ])
 @endsection
+@php
+    $brand_color = $brand->brand_color;
+@endphp
 @section('content')
 <section>
     <div class="container-fluid p-0 position-relative overflow-auto">
@@ -46,19 +49,19 @@
                 <h3 class="mb-4">{{$brand->title}}</h3>
                 <p class="mb-5 text-secondary">{{$brand->meta_desc ?? 'Artisan Kuliner Group Special Brand'}}</p>
                 <div class="d-flex align-items-center gap-4">
-                    <a href="tel:{{$brand->contact_telp}}" class="p-2 px-3 text-decoration-none" style="background-color: #212121; color:#fff">Book Now</a>
-                    <a href="tel:{{$brand->contact_telp}}" class="p-2 px-3 text-decoration-none bg-light text-secondary">Order Delivery</a>
+                    <a href="tel:{{$brand->contact_telp}}" class="p-2 px-3 text-decoration-none" style="background-color: {{ $brand->brand_color ?? '#212121'}}; color:#fff">Book Now</a>
+                    <a href="tel:{{$brand->contact_telp}}" class="p-2 px-3 text-decoration-none bg-light text-secondary" style="color: {{$brand->brand_color}} !important">Order Delivery</a>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="row">
-                    <div class="col-6 pb-5">
+                    {{-- <div class="col-6 pb-5">
                         <h6>Opening Hours</h6>
                         <div class="text-secondary">
                             {{$brand->opening_time}}
                         </div>
-                    </div>
-                    <div class="col-6 pb-5">
+                    </div> --}}
+                    <div class="col-12 pb-5">
                         <h6>Social Media</h6>
                         <div class="text-secondary">
                             <a href="{{$brand->socmed_link_fb}}" target="_blank" class="text-secondary {{$brand->socmed_link_fb ? 'd-block' : 'd-none'}}">Facebook</a>
@@ -68,14 +71,14 @@
                             <a href="{{$brand->socmed_link_tt}}" target="_blank" class="text-secondary {{$brand->socmed_link_tt ? 'd-block' : 'd-none'}}">Tiktok</a>
                         </div>
                     </div>
-                    <div class="col-6 pb-5">
+                    {{-- <div class="col-6 pb-5">
                         <h6>Contact</h6>
                         <div class="text-secondary">
                             <span style="white-space: nowrap">T: {{$brand->contact_telp}}</span><br />
                             <span style="white-space: nowrap">E: {{$brand->contact_mail}}</span><br />
                             {{$brand->contact_site}}
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -88,7 +91,7 @@
         @if (count($brand->locations) > 0)
         <div class="row">
             <div class="col-1">
-                <div class="d-flex align-items-center justify-content-center h-100">
+                <div class="{{count($brand->locations) > 3 ? 'd-flex' : 'd-none'}} align-items-center justify-content-center h-100">
                     <div class="prev-brand-map d-flex align-items-center justify-content-center p-2 rounded-circle border" style="cursor: pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48">
                             <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M31 36L19 24l12-12" />
@@ -97,13 +100,13 @@
                 </div>
             </div>
             <div class="col-10">
-                <div class="brand-map-carousel owl-carousel owl-theme">
+                <div class="{{count($brand->locations) > 3 ? 'brand-map-carousel owl-carousel owl-theme' : 'brand-map-box'}}">
                     @foreach ($brand->locations as $loc)
                     <div class="border d-flex flex-column text-center justify-content-center gap-4 p-5">
                         <div>
                             <h6>{{$loc->title}}</h6>
                             <p>{{$loc->address}}</p>
-                            <a href="{{url($loc->link_gmap)}}" class="d-inline-flex align-items-center gap-2 fw-bold text-decoration-none text-dark border-bottom border-dark">
+                            <a href="{{url($loc->link_gmap)}}" class="d-inline-flex align-items-center gap-2 fw-bold text-decoration-none text-dark border-bottom border-dark" style="color: {{$brand->brand_color}} !important">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                                     <path fill="currentColor" d="M18.364 4.636a9 9 0 0 1 .203 12.519l-.203.21l-4.243 4.242a3 3 0 0 1-4.097.135l-.144-.135l-4.244-4.243A9 9 0 0 1 18.364 4.636M12 8a3 3 0 1 0 0 6a3 3 0 0 0 0-6" />
                                 </svg>
@@ -115,12 +118,24 @@
                         </div>
                         <div>
                             <h6>Opening Hour</h6>
-                            <p>{{$loc->opening_time}}</p>
+                            @php
+                                $string = $loc->opening_time;
+                            
+                                // Memisahkan berdasarkan tanda kurung
+                                $parts = explode('(', $string);
+                            
+                                // Bagian hari
+                                $days = trim($parts[0]);
+                            
+                                // Bagian waktu, hapus tanda kurung tutup
+                                $time = isset($parts[1]) ? trim(rtrim($parts[1], ')')) : '';
+                            @endphp
+                            <p>{{$days}}<br />({{$time}})</p>
                         </div>
                         <div>
                             <h6>Contact Us</h6>
-                            <p>Booking & Enquires<br />
-                            WA: {{$loc->contact_telp}}</p>
+                            <p class="m-0">Booking & Enquires</p>
+                            <a href="https://wa.me/{{formatPhoneNumber($loc->contact_telp)}}?text=Hallo, Artisan Kuliner Group saya ingin bertanya lebih lanjut untuk {{$brand->title}} di lokasi {{$loc->title}}" class="text-secondary">WA: {{$loc->contact_telp}}</a>
                         </div>
                         <div>
                             <h6>Order Online</h6>
@@ -144,7 +159,7 @@
                 </div>
             </div>
             <div class="col-1">
-                <div class="d-flex align-items-center justify-content-center h-100">
+                <div class="{{count($brand->locations) > 3 ? 'd-flex' : 'd-none'}} align-items-center justify-content-center h-100">
                     <div class="next-brand-map d-flex align-items-center justify-content-center p-2 rounded-circle border" style="cursor: pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48">
                             <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="m19 12l12 12l-12 12" />
@@ -154,7 +169,7 @@
             </div>
             <div class="col-12">
                 <div class="d-flex align-items-center justify-content-center mt-4">
-                    <button class="view-menu text-decoration-none p-2 px-3" style="color: #fff; background-color:#212121;">View Menu</button>
+                    <button class="view-menu text-decoration-none border-0 p-2 px-3" style="color: #fff; background-color:{{$brand->brand_color ?? '#212121'}};">View Menu</button>
                 </div>
             </div>
         </div>
@@ -174,7 +189,7 @@
                         <h3>{{setting('cta.cta_title')}}</h3>
                         <p>{{setting('cta.cta_desc')}}</p>
                     </div>
-                    <a href="{{url(setting('cta.btn_link'))}}" class="btn btn-secondary">{{setting('cta.btn_text')}}</a>
+                    <a href="{{url(setting('cta.btn_link'))}}" class="btn p-2 px-3 rounded-0 border-0 text-white bg-secondary" style="background-color:{{$brand->brand_color}} !important">{{setting('cta.btn_text')}}</a>
                 </div>
             </div>
         </div>
@@ -197,18 +212,21 @@
         </div>
         <div class="" style="max-height: 52vh">
             @if (count($gmenus) > 0)
-            <div class="akg-sec-bg akg-prm fw-bold p-2 px-4">
+            <div class="akg-sec-bg text-white fw-bold p-2 px-4" style="background:{{$brand->brand_color}} !important;">
                 General Menu
             </div>
             <div class="p-2 px-4 d-flex align-items-center flex-wrap gap-2">
                 @foreach ($gmenus as $gmenu)
-                    <a href="{{ $gmenu->file ? Voyager::image($gmenu->file) : $gmenu->link_file }}" target="_blank" class="btn btn-sm btn-outline-secondary rounded-0">{{$gmenu->name}}</a>
+                    @php
+                    $gfilePath = json_decode($gmenu->file);
+                    @endphp
+                    <a href="{{ count($gfilePath) > 0 ? Voyager::image($gfilePath[0]->download_link) : $gmenu->link_file }}" target="_blank" class="btn btn-sm btn-outline-secondary rounded-0">{{$gmenu->name}}</a>
                 @endforeach
             </div>
             @endif
             @if (count($lmenus) > 0)
                 @foreach ($lmenus as $location)
-                <div class="akg-sec-bg akg-prm fw-bold p-2 px-4">
+                <div class="akg-sec-bg text-white fw-bold p-2 px-4" style="background:{{$brand->brand_color}} !important;">
                     {{$location->title}}
                 </div>
                 <div class="p-2 px-4 d-flex align-items-center flex-wrap gap-2">
@@ -218,9 +236,8 @@
                         @foreach ($location->brandMenus as $menu)
                             @php
                             $filePath = json_decode($menu->file);
-                            
                             @endphp
-                            <a href="{{ strlen($menu->link_file) > 5 ? Voyager::image($filePath[0]->download_link) : $menu->link_file }}" target="_blank" class="btn btn-sm btn-outline-secondary rounded-0">{{$menu->name}}</a>
+                            <a href="{{ count($filePath) > 0 ? Voyager::image($filePath[0]->download_link) : $menu->link_file }}" target="_blank" class="btn btn-sm btn-outline-secondary rounded-0">{{$menu->name}}</a>
                         @endforeach
                     @endif
                 </div>

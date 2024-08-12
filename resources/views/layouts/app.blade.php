@@ -21,11 +21,11 @@
 </head>
 <body>
 
-    @include('partials.header')
+    @include('partials.header', ['brand_color' => $brand_color ?? '#14262C'])
     <main>
         @yield('content')
     </main>
-    @include('partials.footer')
+    @include('partials.footer', ['brand_color'=>$brand_color ?? '#14262C'])
     @yield('script')
     
     <!-- Jquery -->

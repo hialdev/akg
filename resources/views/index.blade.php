@@ -23,7 +23,6 @@
                     </div>
                     <div class="col-lg-8">
                         <h1 class="text-white">{{setting('content.home_hero_title')}}</h1>
-                        <a href="#explore" class="btn btn-akg-prm">{{setting('content.hero_btn_Text')}}</a>
                     </div>
                 </div>
             </div>
