@@ -24,7 +24,7 @@
                     </div>
                 </div>
             </div>
-            <img src="{{Voyager::image($hero->image)}}" alt="Image Hero Jumbotron AKG" class="d-block w-100 image-hero" style="max-height: 100vh; object-fit:cover;">
+            <img src="{{Voyager::image($hero->image)}}" alt="Image Hero Jumbotron {{$hero->title}} AKG" class="d-block w-100 image-hero">
         </div>
         @endforeach
     </div>
@@ -43,12 +43,12 @@
 <section class="bg-light h-100">
     <div class="container-fluid">
         <div class="row align-items-center">
-            <div class="col-lg-4 p-5">
+            <div class="col-lg-2 p-5 text-center text-md-start">
                 <h3 class="akg-prm">{{setting('content.home_brand_title')}}</h3>
-                <hr class="divider">
-                <p class="text-secondary">{{setting('content.home_hero_desc')}}</p>
+                <hr class="divider mx-auto ms-md-0" style="max-width: 3em">
+                {{-- <p class="text-secondary">{{setting('content.home_hero_desc')}}</p> --}}
             </div>
-            <div class="col-lg-8">
+            <div class="col-lg-10">
                 <div class="brand-box">
                     @foreach ($brands as $brand)
                     <a href="{{route('brand.show', $brand->slug)}}" class="text-decoration-none text-dark d-b;pck">

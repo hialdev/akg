@@ -53,31 +53,31 @@
                 </div>
             </div> --}}
             <div class="">
-                <button class="ms-auto search-button btn akg-sec p-0 m-0 d-flex align-items-center justify-content-center" style="color: {{Route::is('brand.show') ? '#fff': ''}} !important">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
-                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="m21 21l-4.343-4.343m0 0A8 8 0 1 0 5.343 5.343a8 8 0 0 0 11.314 11.314" />
+                <button class="ms-auto btn-menu-mobile btn akg-sec p-0 m-0 d-flex align-items-center justify-content-center" style="color: {{Route::is('brand.show') ? '#fff': ''}} !important">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24">
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M3 6h18m-10 6h10M6 18h15" />
                     </svg>
                 </button>
             </div>
             
         </nav>
-        <div class="col-12 p-0">
-            <div class="menu-box-mobile d-flex justify-content-start gap-5 p-2 px-4 akg-sec-bg" style="{{Route::is('brand.show') ? 'background:#14262C !important' : ''}};overflow:auto">
-                @include('partials.menu', ['brand_color' => $brand_color])
-            </div>
-        </div>
     </div>
 </header>
 
+<div class="menu-mobile-nav">
+    <div class="d-flex d-md-none flex-column gap-4 position-fixed top-0 end-0 start-0 bottom-0 p-4 bg-dark" style="{{Route::is('brand.show') ? 'background:#14262C !important' : ''}};overflow:auto; z-index:999">
+        @include('partials.mobile-menu', ['brand_color' => $brand_color])
+    </div>
+</div>
 {{-- Modal Search --}}
 <div class="modal-search p-3 position-fixed top-0 end-0 start-0 bottom-0 d-none align-items-center justify-content-center" style="background-color:#2121216b;z-index: 99999">
     <div class="position-relative p-4 bg-white" style="max-width: 30em">
         <div class="fs-5 fw-semibold">Search</div>
-        <p>Cari artikel, news, brand, event, atau career pada Artisan Kuliner Group</p>
+        <p>Find article, news, brand, event, or career on Artisan Kuliner Group Site</p>
         <form action="{{route('search')}}" method="GET">
             <div class="d-flex align-items-center gap-3">
-                <input type="text" name="q" minlength="4" class="form-control border-2 outline-dark rounded-0 p-2 px-3 border-dark" placeholder="Cari dengan minimal 4 huruf">
-                <button type="submit" class="btn btn-dark rounded-0 p-2 px-3">Cari</button>
+                <input type="text" name="q" minlength="4" class="form-control border-2 outline-dark rounded-0 p-2 px-3 border-dark" placeholder="Find with min. 4 letters">
+                <button type="submit" class="btn btn-dark rounded-0 p-2 px-3">Find</button>
             </div>
         </form>
         <div class="close-search position-absolute top-0 end-0 p-2 bg-light text-secondary" style="cursor: pointer">

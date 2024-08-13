@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col">
                 <h1>Search</h1>
-                <p>Menampilkan hasil untuk pencarian : <span class="fw-bold akg-sec">{{$q}}</span></p>
+                <p>Displaying results for : <span class="fw-bold akg-sec">{{$q}}</span></p>
             </div>
         </div>
     </div>
@@ -71,7 +71,7 @@
             </div>
             @forelse ($events as $ev)
             <div class="col-12 col-md-4 col-lg-3">
-                <a href="{{route('events.show', $ev->slug)}}" class="text-decoration-none d-block text-dark text-dark p-4 border border-dark mb-3 item-search">
+                <a href="{{route('event.show', $ev->slug)}}" class="text-decoration-none d-block text-dark text-dark p-4 border border-dark mb-3 item-search">
                     <h6>{{$ev->title}}</h6>
                     <p class="text-secondary" style="font-size: 13px">{{ \Carbon\Carbon::parse($ev->created_at)->format('d F Y')}}</p>
                 </a>

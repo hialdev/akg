@@ -65,6 +65,12 @@
 }
 
 // Menu
+.menu-mobile-nav{
+    display: none;
+}
+.mega-menu-mobile{
+    display: none;
+}
 .menu-box{
     display: flex;
     align-items: center;
@@ -212,7 +218,12 @@
 }
 .image-hero{
     min-height: 100vh;
+    max-height: 100vh;
     object-fit: cover;
+    @media (max-width:767px){
+        min-height: 83vh;
+        max-height: 83vh;
+    }
 }
 //divider
 .divider{
@@ -245,7 +256,7 @@
     // Brand Box
 .brand-box{
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 kolom */
+    grid-template-columns: repeat(5, 1fr); /* 4 kolom */
     gap: 5px;
     @media (max-width: 767px) {
         grid-template-columns: repeat(2, 1fr);

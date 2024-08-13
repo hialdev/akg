@@ -60,6 +60,14 @@
   color: #14262C;
 }
 
+.menu-mobile-nav {
+  display: none;
+}
+
+.mega-menu-mobile {
+  display: none;
+}
+
 .menu-box {
   display: flex;
   align-items: center;
@@ -193,8 +201,15 @@
 
 .image-hero {
   min-height: 100vh;
+  max-height: 100vh;
   -o-object-fit: cover;
      object-fit: cover;
+}
+@media (max-width: 767px) {
+  .image-hero {
+    min-height: 83vh;
+    max-height: 83vh;
+  }
 }
 
 .divider {
@@ -225,7 +240,7 @@
 
 .brand-box {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 kolom */
+  grid-template-columns: repeat(5, 1fr); /* 4 kolom */
   gap: 5px;
 }
 @media (max-width: 767px) {
