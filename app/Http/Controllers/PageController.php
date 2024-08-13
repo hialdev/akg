@@ -15,7 +15,7 @@ class PageController extends Controller
 {
     public function index(){
         $heros = Jumbotron::where('used',1)->latest()->get();
-        $brands = Brand::orderBy('urutan', 'desc')->get();
+        $brands = Brand::orderBy('urutan', 'asc')->get();
         $news = News::limit(4)->get();
 
         return view('index', compact('brands','news', 'heros'));

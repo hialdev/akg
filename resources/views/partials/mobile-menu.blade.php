@@ -23,7 +23,7 @@
                 <div class="col-lg-8">
                     <div class="brand-box">
                         @php
-                            $brands = \App\Models\Brand::orderBy('urutan', 'desc')->get();
+                            $brands = \App\Models\Brand::orderBy('urutan', 'asc')->get();
                         @endphp
                         @foreach ($brands as $brand)
                         <a href="{{route('brand.show', $brand->slug)}}" class="d-block">
