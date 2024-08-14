@@ -333,6 +333,14 @@
         color:inherit;
     }
 }
+.news-item{
+    img{
+        max-width: 15em;
+        @media (max-width:768px){
+            max-width: 8em;
+        }
+    }
+}
 
 p{
     color: rgba(108, 117, 125,1) !important;

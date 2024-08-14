@@ -40,11 +40,11 @@
         <div class="row">
             @foreach ($news_cards as $new)
             <div class="col-md-6 mb-3">
-                <a href="{{route('news.show', $new->slug)}}" class="d-flex align-items-center text-decoration-none text-dark">
-                    <div>
-                        <img src="{{Voyager::image($new->image)}}" alt="Image {{$new->title}}" class="d-block" style="aspect-ratio:16/9; max-width:15em; object-fit:cover;">
+                <a href="{{route('news.show', $new->slug)}}" class="news-item d-flex align-items-center text-decoration-none text-dark">
+                    <div style="height: fit-content">
+                        <img src="{{Voyager::image($new->image)}}" alt="Image {{$new->title}}" class="d-block" style="aspect-ratio:16/9; object-fit:cover;">
                     </div>
-                    <div class="p-4">
+                    <div class="p-2 ps-4">
                         <h6>{{$new->title}}</h6>
                         <p class="mt-auto text-secondary" style="font-size: 11px">{{ \Carbon\Carbon::parse($new->created_at)->format('d F Y')}}</p>
                     </div>

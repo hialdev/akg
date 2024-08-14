@@ -19,7 +19,7 @@
     @if (count($video) > 0)
     <div class="position-relative video-jumbotron">
         <div class="position-absolute top-0 end-0 start-0 bottom-0">
-            <video autoplay muted loop>
+            <video autoplay muted loop playsinline>
                 <source src="{{Voyager::image($video[0]->download_link)}}" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -96,7 +96,7 @@
                 <h2>{{setting('content.home_news_title')}}</h2>
                 <hr class="divider">
                 <p class="text-secondary">{{setting('content.home_news_desc')}}</p>
-                <a href="{{route('about')}}" class="btn d-flex align-items-center gap-3 p-0 akg-sec">
+                <a href="{{route('news')}}" class="btn d-flex align-items-center gap-3 p-0 akg-sec">
                     Read More
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16">
                         <path fill="currentColor" fill-rule="evenodd" d="M10.159 10.72a.75.75 0 1 0 1.06 1.06l3.25-3.25L15 8l-.53-.53l-3.25-3.25a.75.75 0 0 0-1.061 1.06l1.97 1.97H1.75a.75.75 0 1 0 0 1.5h10.379z" clip-rule="evenodd" />
@@ -124,7 +124,7 @@
     <div class="container py-5">
         <div class="text-center">
             <h2 class="akg-sec">About Us</h2>
-            <p class="text-secondary">{{setting('content.home_about')}}, <a href="" class="akg-sec btn p-0">Read More...</a></p>
+            <p class="text-secondary">{{setting('content.home_about')}}, <a href="{{route('about')}}" class="akg-sec btn p-0">Read More...</a></p>
         </div>
     </div>
     <img src="{{Voyager::image(setting('content.sep_img'))}}" alt="Image Seperator" class="d-block w-100">

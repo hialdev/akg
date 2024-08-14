@@ -323,6 +323,15 @@
   color: inherit;
 }
 
+.news-item img {
+  max-width: 15em;
+}
+@media (max-width: 768px) {
+  .news-item img {
+    max-width: 8em;
+  }
+}
+
 p {
   color: rgb(108, 117, 125) !important;
 }
