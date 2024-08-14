@@ -199,6 +199,34 @@
   }
 }
 
+.video-jumbotron {
+  min-height: 100vh;
+  max-height: 100vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.video-jumbotron > div {
+  height: 100vh;
+}
+.video-jumbotron > div h1 {
+  max-width: 20em !important;
+  text-align: center;
+}
+.video-jumbotron > iframe {
+  width: 100%;
+  min-height: 100vh;
+  max-height: 100vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.video-jumbotron video {
+  width: 100%;
+  min-height: 100vh;
+  max-height: 100vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .image-hero {
   min-height: 100vh;
   max-height: 100vh;

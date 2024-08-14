@@ -12,6 +12,23 @@
 @endsection
 @section('content')
 <section>
+    @php
+        $video = setting('content.video');
+        $video = json_decode($video);
+    @endphp
+    @if (count($video) > 0)
+    <div class="position-relative video-jumbotron">
+        <div class="position-absolute top-0 end-0 start-0 bottom-0">
+            <video autoplay muted loop>
+                <source src="{{Voyager::image($video[0]->download_link)}}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="d-flex align-items-center position-relative justify-content-center text-white" style="z-index: 10">
+            <h1 style="max-width: 15em !important">{{setting('content.home_hero_title')}}</h1>
+        </div>
+    </div>
+    @else
     <div class="hero-carousel owl-carousel owl-theme">
         @foreach ($heros as $hero)
         <div class="position-relative">
@@ -28,6 +45,7 @@
         </div>
         @endforeach
     </div>
+    @endif
 </section>
 <section class="py-5" id="explore">
     <div class="container py-5">

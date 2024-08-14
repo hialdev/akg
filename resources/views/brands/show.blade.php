@@ -45,15 +45,18 @@
 <section>
     <div class="container py-5">
         <div class="row py-3">
+            <div class="col-md-3">
+                <img src="{{Voyager::image($brand->logo)}}" alt="Logo {{$brand->title}}" class="d-block w-100 p-3">
+            </div>
             <div class="col-md-6 pe-md-5 mb-5">
                 <h3 class="mb-4">{{$brand->title}}</h3>
                 <p class="mb-5 text-secondary">{{$brand->meta_desc ?? 'Artisan Kuliner Group Special Brand'}}</p>
-                <div class="d-flex align-items-center gap-4">
+                {{-- <div class="d-flex align-items-center gap-4">
                     <a href="tel:{{$brand->contact_telp}}" class="p-2 px-3 text-decoration-none" style="background-color: {{ $brand->brand_color ?? '#212121'}}; color:#fff">Book Now</a>
                     <a href="tel:{{$brand->contact_telp}}" class="p-2 px-3 text-decoration-none bg-light text-secondary" style="color: {{$brand->brand_color}} !important">Order Delivery</a>
-                </div>
+                </div> --}}
             </div>
-            <div class="col-md-6">
+            <div class="col-md-3">
                 <div class="row">
                     {{-- <div class="col-6 pb-5">
                         <h6>Opening Hours</h6>

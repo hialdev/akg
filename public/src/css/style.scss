@@ -216,6 +216,31 @@
         }
     }
 }
+
+.video-jumbotron{
+    min-height: 100vh;
+    max-height: 100vh;
+    object-fit: cover;
+    > div{
+        height: 100vh;
+        h1{
+            max-width: 20em !important;
+            text-align: center;
+        }
+    }
+    > iframe{
+        width: 100%;
+        min-height: 100vh;
+        max-height: 100vh;
+        object-fit: cover;
+    }
+    video{
+        width: 100%;
+        min-height: 100vh;
+        max-height: 100vh;
+        object-fit: cover;
+    }
+}
 .image-hero{
     min-height: 100vh;
     max-height: 100vh;
