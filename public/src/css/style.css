@@ -207,10 +207,13 @@
 }
 .video-jumbotron > div {
   height: 100vh;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .video-jumbotron > div h1 {
   max-width: 20em !important;
   text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 .video-jumbotron > iframe {
   width: 100%;

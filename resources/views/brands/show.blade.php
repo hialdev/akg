@@ -66,12 +66,32 @@
                     </div> --}}
                     <div class="col-12 pb-5">
                         <h6>Social Media</h6>
-                        <div class="text-secondary">
-                            <a href="{{$brand->socmed_link_fb}}" target="_blank" class="text-secondary {{$brand->socmed_link_fb ? 'd-block' : 'd-none'}}">Facebook</a>
-                            <a href="{{$brand->socmed_link_x}}" target="_blank" class="text-secondary {{$brand->socmed_link_x ? 'd-block' : 'd-none'}}">Twitter</a>
-                            <a href="{{$brand->socmed_link_yt}}" target="_blank" class="text-secondary {{$brand->socmed_link_yt ? 'd-block' : 'd-none'}}">Youtube</a>
-                            <a href="{{$brand->socmed_link_ig}}" target="_blank" class="text-secondary {{$brand->socmed_link_ig ? 'd-block' : 'd-none'}}">Instagram</a>
-                            <a href="{{$brand->socmed_link_tt}}" target="_blank" class="text-secondary {{$brand->socmed_link_tt ? 'd-block' : 'd-none'}}">Tiktok</a>
+                        <div class="d-flex align-items-center gap-2">
+                            @if ($brand->socmed_link_fb)
+                            <a href="{{url($brand->socmed_link_fb)}}" target="_blank" class="d-flex rounded-3 align-items-center akg-sec-bg text-white p-2" style="background: {{Route::is('brand.show') ? $brand_color : ''}} !important">
+                                <span class="iconify" data-icon="bi:facebook" data-inline="false"></span>
+                            </a>
+                            @endif
+                            @if ($brand->socmed_link_x)
+                            <a href="{{url($brand->socmed_link_x)}}" target="_blank" class="d-flex rounded-3 align-items-center akg-sec-bg text-white p-2" style="background: {{Route::is('brand.show') ? $brand_color : ''}} !important">
+                                <span class="iconify" data-icon="bi:twitter" data-inline="false"></span>
+                            </a>
+                            @endif
+                            @if ($brand->socmed_link_ig)
+                            <a href="{{url($brand->socmed_link_ig)}}" target="_blank" class="d-flex rounded-3 align-items-center akg-sec-bg text-white p-2" style="background: {{Route::is('brand.show') ? $brand_color : ''}} !important">
+                                <span class="iconify" data-icon="bi:instagram" data-inline="false"></span>
+                            </a>
+                            @endif
+                            @if ($brand->socmed_link_yt)
+                            <a href="{{url($brand->socmed_link_yt)}}" target="_blank" class="d-flex rounded-3 align-items-center akg-sec-bg text-white p-2" style="background: {{Route::is('brand.show') ? $brand_color : ''}} !important">
+                                <span class="iconify" data-icon="bi:youtube" data-inline="false"></span>
+                            </a>
+                            @endif
+                            @if ($brand->socmed_link_tt)
+                            <a href="{{url($brand->socmed_link_tt)}}" target="_blank" class="d-flex rounded-3 align-items-center akg-sec-bg text-white p-2" style="background: {{Route::is('brand.show') ? $brand_color : ''}} !important">
+                                <span class="iconify" data-icon="bi:tiktok" data-inline="false"></span>
+                            </a>
+                            @endif
                         </div>
                     </div>
                     {{-- <div class="col-6 pb-5">
@@ -94,18 +114,34 @@
         @if (count($brand->locations) > 0)
         <div class="row">
             <div class="col-1">
-                <div class="{{count($brand->locations) > 3 ? 'd-flex' : 'd-none'}} align-items-center justify-content-center h-100">
+                @if (count($brand->locations) <= 3)
+                <div class="d-flex d-md-none align-items-center justify-content-center h-100">
                     <div class="prev-brand-map d-flex align-items-center justify-content-center p-2 rounded-circle border" style="cursor: pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48">
                             <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M31 36L19 24l12-12" />
                         </svg>
                     </div>
                 </div>
+                @else
+                <div class="d-flex align-items-center justify-content-center h-100">
+                    <div class="prev-brand-map d-flex align-items-center justify-content-center p-2 rounded-circle border" style="cursor: pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48">
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M31 36L19 24l12-12" />
+                        </svg>
+                    </div>
+                </div>
+                @endif
             </div>
             <div class="col-10">
-                <div class="{{count($brand->locations) > 3 ? 'brand-map-carousel owl-carousel owl-theme' : 'brand-map-box'}}">
+                {{-- Ketika Lokasi Lebih dari 3 maka carousel --}}
+                @if (count($brand->locations) > 1 && count($brand->locations) <= 3)
+                {{-- Kurang Dari Laptop --}}
+                <div class="d-md-none brand-map-carousel owl-carousel owl-theme">
                     @foreach ($brand->locations as $loc)
                     <div class="border d-flex flex-column text-center justify-content-center gap-4 p-5">
+                        <div>
+                            <img src="{{Voyager::image($loc->store_image)}}" alt="Image of {{$brand->title}} in {{$loc->title}}" class="d-block w-100 rounded-3" style="aspect-ratio:16/9;object-fit:cover;">
+                        </div>
                         <div>
                             <h6>{{$loc->title}}</h6>
                             <p>{{$loc->address}}</p>
@@ -137,38 +173,270 @@
                         </div>
                         <div>
                             <h6>Contact Us</h6>
-                            <p class="m-0">Booking & Enquires</p>
-                            <a href="https://wa.me/{{formatPhoneNumber($loc->contact_telp)}}?text=Hallo, Artisan Kuliner Group saya ingin bertanya lebih lanjut untuk {{$brand->title}} di lokasi {{$loc->title}}" class="text-secondary">WA: {{$loc->contact_telp}}</a>
+                            <div class="d-flex align-items-center gap-2 justify-content-center">
+                                <a style="background: {{$brand->brand_color}} !important; color:#fff !important;" href="tel:{{$loc->contact_telp}}" class="text-secondary {{ $loc->contact_telp ? 'd-flex' : 'd-none'}} align-items-center justify-content-center p-2 rounded-2 border-1 bg-light">
+                                    <i class="iconify" data-icon="ph:phone-fill"></i>
+                                </a>
+                                <a style="background: {{$brand->brand_color}} !important; color:#fff !important;" href="https://wa.me/{{formatPhoneNumber($loc->contact_whatsapp)}}?text=Hallo, Artisan Kuliner Group saya ingin bertanya lebih lanjut untuk {{$brand->title}} di lokasi {{$loc->title}}" class="text-secondary {{$loc->contact_whatsapp ? 'd-flex': 'd-none'}} align-items-center justify-content-center p-2 rounded-2 bg-light border-1">
+                                    <i class="iconify" data-icon="bi:whatsapp"></i>
+                                </a>
+                                <a style="background: {{$brand->brand_color}} !important; color:#fff !important;" href="mailto:{{$loc->contact_email}}" class="text-secondary {{ $loc->contact_email ? 'd-flex' : 'd-none'}} align-items-center justify-content-center p-2 rounded-2 border-1 bg-light">
+                                    <i class="iconify" data-icon="eva:email-outline"></i>
+                                </a>
+                            </div>
                         </div>
                         <div>
-                            <h6>Order Online</h6>
+                            <h6>Online Order</h6>
                             <div class="d-flex align-items-center flex-wrap gap-2 justify-content-center">
                                 <a href="{{$loc->ofd_grabfood}}" class="brand-order-online text-decoration-none {{$loc->ofd_grabfood ? 'd-flex' : 'd-none'}} align-items-center justify-content-center p-1 px-2 btn btn-outline-light rounded">
-                                    <img src="{{env('APP_URL')}}/src/images/logo/grabfood.png" alt="Logo Grabfood" class="d-block" style="max-height: 1.5em;">
+                                    <img src="{{env('APP_URL')}}/src/images/logo/grabfood.png" alt="Logo Grabfood" class="d-block" style="height:1.5em; object-fit:contain; width:5em">
                                 </a>
                                 <a href="{{$loc->ofd_gofood}}" class="brand-order-online text-decoration-none {{$loc->ofd_gofood ? 'd-flex' : 'd-none'}} align-items-center justify-content-center p-1 px-2 btn btn-outline-light rounded">
-                                    <img src="{{env('APP_URL')}}/src/images/logo/gofood.png" alt="Logo gofood" class="d-block" style="max-height: 1.5em;">
+                                    <img src="{{env('APP_URL')}}/src/images/logo/gofood.png" alt="Logo gofood" class="d-block" style="height:1.5em; object-fit:contain; width:5em">
                                 </a>
                                 <a href="{{$loc->ofd_shopeefood}}" class="brand-order-online text-decoration-none {{$loc->ofd_shopeefood ? 'd-flex' : 'd-none'}} align-items-center justify-content-center p-1 px-2 btn btn-outline-light rounded">
-                                    <img src="{{env('APP_URL')}}/src/images/logo/shopeefood.png" alt="Logo shopeefood" class="d-block" style="max-height: 1.5em;">
+                                    <img src="{{env('APP_URL')}}/src/images/logo/shopeefood.png" alt="Logo shopeefood" class="d-block" style="height:1.5em; object-fit:contain; width:5em">
                                 </a>
                                 <a href="{{$loc->ofd_airasiafood}}" class="brand-order-online text-decoration-none {{$loc->ofd_airasiafood ? 'd-flex' : 'd-none'}} align-items-center justify-content-center p-1 px-2 btn btn-outline-light rounded">
-                                    <img src="{{env('APP_URL')}}/src/images/logo/airasia-food.png" alt="Logo shopeefood" class="d-block" style="max-height: 1.5em;">
+                                    <img src="{{env('APP_URL')}}/src/images/logo/airasia-food.png" alt="Logo shopeefood" class="d-block" style="height:1.5em; object-fit:contain; width:5em">
                                 </a>
                             </div>
                         </div>
                     </div>
                     @endforeach
                 </div>
+
+                {{-- Laptop --}}
+                <div class="d-none d-md-grid brand-map-box">
+                    @foreach ($brand->locations as $loc)
+                    <div class="border d-flex flex-column text-center justify-content-center gap-4 p-5">
+                        <div>
+                            <img src="{{Voyager::image($loc->store_image)}}" alt="Image of {{$brand->title}} in {{$loc->title}}" class="d-block w-100 rounded-3" style="aspect-ratio:16/9;object-fit:cover;">
+                        </div>
+                        <div>
+                            <h6>{{$loc->title}}</h6>
+                            <p>{{$loc->address}}</p>
+                            <a href="{{url($loc->link_gmap)}}" class="d-inline-flex align-items-center gap-2 fw-bold text-decoration-none text-dark border-bottom border-dark" style="color: {{$brand->brand_color}} !important">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                                    <path fill="currentColor" d="M18.364 4.636a9 9 0 0 1 .203 12.519l-.203.21l-4.243 4.242a3 3 0 0 1-4.097.135l-.144-.135l-4.244-4.243A9 9 0 0 1 18.364 4.636M12 8a3 3 0 1 0 0 6a3 3 0 0 0 0-6" />
+                                </svg>
+                                Location
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 256 256">
+                                    <path fill="currentColor" d="M192 136v72a16 16 0 0 1-16 16H48a16 16 0 0 1-16-16V80a16 16 0 0 1 16-16h72a8 8 0 0 1 0 16H48v128h128v-72a8 8 0 0 1 16 0m32-96a8 8 0 0 0-8-8h-64a8 8 0 0 0-5.66 13.66L172.69 72l-42.35 42.34a8 8 0 0 0 11.32 11.32L184 83.31l26.34 26.35A8 8 0 0 0 224 104Z" />
+                                </svg>
+                            </a>
+                        </div>
+                        <div>
+                            <h6>Opening Hour</h6>
+                            @php
+                                $string = $loc->opening_time;
+                            
+                                // Memisahkan berdasarkan tanda kurung
+                                $parts = explode('(', $string);
+                            
+                                // Bagian hari
+                                $days = trim($parts[0]);
+                            
+                                // Bagian waktu, hapus tanda kurung tutup
+                                $time = isset($parts[1]) ? trim(rtrim($parts[1], ')')) : '';
+                            @endphp
+                            <p>{{$days}}<br />({{$time}})</p>
+                        </div>
+                        <div>
+                            <h6>Contact Us</h6>
+                            <div class="d-flex align-items-center gap-2 justify-content-center">
+                                <a style="background: {{$brand->brand_color}} !important; color:#fff !important;" href="tel:{{formatPhoneNumber($loc->contact_telp)}}" class="text-secondary {{ $loc->contact_telp ? 'd-flex' : 'd-none'}} align-items-center justify-content-center p-2 rounded-2 border-1 bg-light">
+                                    <i class="iconify" data-icon="ph:phone-fill"></i>
+                                </a>
+                                <a style="background: {{$brand->brand_color}} !important; color:#fff !important;" href="https://wa.me/{{formatPhoneNumber($loc->contact_whatsapp)}}?text=Hallo, Artisan Kuliner Group saya ingin bertanya lebih lanjut untuk {{$brand->title}} di lokasi {{$loc->title}}" class="text-secondary {{$loc->contact_whatsapp ? 'd-flex': 'd-none'}} align-items-center justify-content-center p-2 rounded-2 bg-light border-1">
+                                    <i class="iconify" data-icon="bi:whatsapp"></i>
+                                </a>
+                                <a style="background: {{$brand->brand_color}} !important; color:#fff !important;" href="mailto:{{$loc->contact_email}}" class="text-secondary {{ $loc->contact_email ? 'd-flex' : 'd-none'}} align-items-center justify-content-center p-2 rounded-2 border-1 bg-light">
+                                    <i class="iconify" data-icon="eva:email-outline"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <h6>Online Order</h6>
+                            <div class="d-flex align-items-center flex-wrap gap-2 justify-content-center">
+                                <a href="{{$loc->ofd_grabfood}}" class="brand-order-online text-decoration-none {{$loc->ofd_grabfood ? 'd-flex' : 'd-none'}} align-items-center justify-content-center p-1 px-2 btn btn-outline-light rounded">
+                                    <img src="{{env('APP_URL')}}/src/images/logo/grabfood.png" alt="Logo Grabfood" class="d-block" style="height:1.5em; object-fit:contain; width:5em">
+                                </a>
+                                <a href="{{$loc->ofd_gofood}}" class="brand-order-online text-decoration-none {{$loc->ofd_gofood ? 'd-flex' : 'd-none'}} align-items-center justify-content-center p-1 px-2 btn btn-outline-light rounded">
+                                    <img src="{{env('APP_URL')}}/src/images/logo/gofood.png" alt="Logo gofood" class="d-block" style="height:1.5em; object-fit:contain; width:5em">
+                                </a>
+                                <a href="{{$loc->ofd_shopeefood}}" class="brand-order-online text-decoration-none {{$loc->ofd_shopeefood ? 'd-flex' : 'd-none'}} align-items-center justify-content-center p-1 px-2 btn btn-outline-light rounded">
+                                    <img src="{{env('APP_URL')}}/src/images/logo/shopeefood.png" alt="Logo shopeefood" class="d-block" style="height:1.5em; object-fit:contain; width:5em">
+                                </a>
+                                <a href="{{$loc->ofd_airasiafood}}" class="brand-order-online text-decoration-none {{$loc->ofd_airasiafood ? 'd-flex' : 'd-none'}} align-items-center justify-content-center p-1 px-2 btn btn-outline-light rounded">
+                                    <img src="{{env('APP_URL')}}/src/images/logo/airasia-food.png" alt="Logo shopeefood" class="d-block" style="height:1.5em; object-fit:contain; width:5em">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                @elseif(count($brand->locations) == 1)
+                <div class="brand-map-box">
+                    @foreach ($brand->locations as $loc)
+                    <div class="border d-flex flex-column text-center justify-content-center gap-4 p-5">
+                        <div>
+                            <img src="{{Voyager::image($loc->store_image)}}" alt="Image of {{$brand->title}} in {{$loc->title}}" class="d-block w-100 rounded-3" style="aspect-ratio:16/9;object-fit:cover;">
+                        </div>
+                        <div>
+                            <h6>{{$loc->title}}</h6>
+                            <p>{{$loc->address}}</p>
+                            <a href="{{url($loc->link_gmap)}}" class="d-inline-flex align-items-center gap-2 fw-bold text-decoration-none text-dark border-bottom border-dark" style="color: {{$brand->brand_color}} !important">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                                    <path fill="currentColor" d="M18.364 4.636a9 9 0 0 1 .203 12.519l-.203.21l-4.243 4.242a3 3 0 0 1-4.097.135l-.144-.135l-4.244-4.243A9 9 0 0 1 18.364 4.636M12 8a3 3 0 1 0 0 6a3 3 0 0 0 0-6" />
+                                </svg>
+                                Location
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 256 256">
+                                    <path fill="currentColor" d="M192 136v72a16 16 0 0 1-16 16H48a16 16 0 0 1-16-16V80a16 16 0 0 1 16-16h72a8 8 0 0 1 0 16H48v128h128v-72a8 8 0 0 1 16 0m32-96a8 8 0 0 0-8-8h-64a8 8 0 0 0-5.66 13.66L172.69 72l-42.35 42.34a8 8 0 0 0 11.32 11.32L184 83.31l26.34 26.35A8 8 0 0 0 224 104Z" />
+                                </svg>
+                            </a>
+                        </div>
+                        <div>
+                            <h6>Opening Hour</h6>
+                            @php
+                                $string = $loc->opening_time;
+                            
+                                // Memisahkan berdasarkan tanda kurung
+                                $parts = explode('(', $string);
+                            
+                                // Bagian hari
+                                $days = trim($parts[0]);
+                            
+                                // Bagian waktu, hapus tanda kurung tutup
+                                $time = isset($parts[1]) ? trim(rtrim($parts[1], ')')) : '';
+                            @endphp
+                            <p>{{$days}}<br />({{$time}})</p>
+                        </div>
+                        <div>
+                            <h6>Contact Us</h6>
+                            <div class="d-flex align-items-center gap-2 justify-content-center">
+                                <a style="background: {{$brand->brand_color}} !important; color:#fff !important;" href="tel:{{$loc->contact_telp}}" class="text-secondary {{ $loc->contact_telp ? 'd-flex' : 'd-none'}} align-items-center justify-content-center p-2 rounded-2 border-1 bg-light">
+                                    <i class="iconify" data-icon="ph:phone-fill"></i>
+                                </a>
+                                <a style="background: {{$brand->brand_color}} !important; color:#fff !important;" href="https://wa.me/{{formatPhoneNumber($loc->contact_whatsapp)}}?text=Hallo, Artisan Kuliner Group saya ingin bertanya lebih lanjut untuk {{$brand->title}} di lokasi {{$loc->title}}" class="text-secondary {{$loc->contact_whatsapp ? 'd-flex': 'd-none'}} align-items-center justify-content-center p-2 rounded-2 bg-light border-1">
+                                    <i class="iconify" data-icon="bi:whatsapp"></i>
+                                </a>
+                                <a style="background: {{$brand->brand_color}} !important; color:#fff !important;" href="mailto:{{$loc->contact_email}}" class="text-secondary {{ $loc->contact_email ? 'd-flex' : 'd-none'}} align-items-center justify-content-center p-2 rounded-2 border-1 bg-light">
+                                    <i class="iconify" data-icon="eva:email-outline"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <h6>Online Order</h6>
+                            <div class="d-flex align-items-center flex-wrap gap-2 justify-content-center">
+                                <a href="{{$loc->ofd_grabfood}}" class="brand-order-online text-decoration-none {{$loc->ofd_grabfood ? 'd-flex' : 'd-none'}} align-items-center justify-content-center p-1 px-2 btn btn-outline-light rounded">
+                                    <img src="{{env('APP_URL')}}/src/images/logo/grabfood.png" alt="Logo Grabfood" class="d-block" style="height:1.5em; object-fit:contain; width:5em">
+                                </a>
+                                <a href="{{$loc->ofd_gofood}}" class="brand-order-online text-decoration-none {{$loc->ofd_gofood ? 'd-flex' : 'd-none'}} align-items-center justify-content-center p-1 px-2 btn btn-outline-light rounded">
+                                    <img src="{{env('APP_URL')}}/src/images/logo/gofood.png" alt="Logo gofood" class="d-block" style="height:1.5em; object-fit:contain; width:5em">
+                                </a>
+                                <a href="{{$loc->ofd_shopeefood}}" class="brand-order-online text-decoration-none {{$loc->ofd_shopeefood ? 'd-flex' : 'd-none'}} align-items-center justify-content-center p-1 px-2 btn btn-outline-light rounded">
+                                    <img src="{{env('APP_URL')}}/src/images/logo/shopeefood.png" alt="Logo shopeefood" class="d-block" style="height:1.5em; object-fit:contain; width:5em">
+                                </a>
+                                <a href="{{$loc->ofd_airasiafood}}" class="brand-order-online text-decoration-none {{$loc->ofd_airasiafood ? 'd-flex' : 'd-none'}} align-items-center justify-content-center p-1 px-2 btn btn-outline-light rounded">
+                                    <img src="{{env('APP_URL')}}/src/images/logo/airasia-food.png" alt="Logo shopeefood" class="d-block" style="height:1.5em; object-fit:contain; width:5em">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                @elseif(count($brand->locations) > 3) 
+                <div class="brand-map-carousel owl-carousel owl-theme">
+                    @foreach ($brand->locations as $loc)
+                    <div class="border d-flex flex-column text-center justify-content-center gap-4 p-5">
+                        <div>
+                            <img src="{{Voyager::image($loc->store_image)}}" alt="Image of {{$brand->title}} in {{$loc->title}}" class="d-block w-100 rounded-3" style="aspect-ratio:16/9;object-fit:cover;">
+                        </div>
+                        <div>
+                            <h6>{{$loc->title}}</h6>
+                            <p>{{$loc->address}}</p>
+                            <a href="{{url($loc->link_gmap)}}" class="d-inline-flex align-items-center gap-2 fw-bold text-decoration-none text-dark border-bottom border-dark" style="color: {{$brand->brand_color}} !important">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                                    <path fill="currentColor" d="M18.364 4.636a9 9 0 0 1 .203 12.519l-.203.21l-4.243 4.242a3 3 0 0 1-4.097.135l-.144-.135l-4.244-4.243A9 9 0 0 1 18.364 4.636M12 8a3 3 0 1 0 0 6a3 3 0 0 0 0-6" />
+                                </svg>
+                                Location
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 256 256">
+                                    <path fill="currentColor" d="M192 136v72a16 16 0 0 1-16 16H48a16 16 0 0 1-16-16V80a16 16 0 0 1 16-16h72a8 8 0 0 1 0 16H48v128h128v-72a8 8 0 0 1 16 0m32-96a8 8 0 0 0-8-8h-64a8 8 0 0 0-5.66 13.66L172.69 72l-42.35 42.34a8 8 0 0 0 11.32 11.32L184 83.31l26.34 26.35A8 8 0 0 0 224 104Z" />
+                                </svg>
+                            </a>
+                        </div>
+                        <div>
+                            <h6>Opening Hour</h6>
+                            @php
+                                $string = $loc->opening_time;
+                            
+                                // Memisahkan berdasarkan tanda kurung
+                                $parts = explode('(', $string);
+                            
+                                // Bagian hari
+                                $days = trim($parts[0]);
+                            
+                                // Bagian waktu, hapus tanda kurung tutup
+                                $time = isset($parts[1]) ? trim(rtrim($parts[1], ')')) : '';
+                            @endphp
+                            <p>{{$days}}<br />({{$time}})</p>
+                        </div>
+                        <div>
+                            <h6>Contact Us</h6>
+                            <div class="d-flex align-items-center gap-2 justify-content-center">
+                                <a style="background: {{$brand->brand_color}} !important; color:#fff !important;" href="tel:{{$loc->contact_telp}}" class="text-secondary {{ $loc->contact_telp ? 'd-flex' : 'd-none'}} align-items-center justify-content-center p-2 rounded-2 border-1 bg-light">
+                                    <i class="iconify" data-icon="ph:phone-fill"></i>
+                                </a>
+                                <a style="background: {{$brand->brand_color}} !important; color:#fff !important;" href="https://wa.me/{{formatPhoneNumber($loc->contact_whatsapp)}}?text=Hallo, Artisan Kuliner Group saya ingin bertanya lebih lanjut untuk {{$brand->title}} di lokasi {{$loc->title}}" class="text-secondary {{$loc->contact_whatsapp ? 'd-flex': 'd-none'}} align-items-center justify-content-center p-2 rounded-2 bg-light border-1">
+                                    <i class="iconify" data-icon="bi:whatsapp"></i>
+                                </a>
+                                <a style="background: {{$brand->brand_color}} !important; color:#fff !important;" href="mailto:{{$loc->contact_email}}" class="text-secondary {{ $loc->contact_email ? 'd-flex' : 'd-none'}} align-items-center justify-content-center p-2 rounded-2 border-1 bg-light">
+                                    <i class="iconify" data-icon="eva:email-outline"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <h6>Online Order</h6>
+                            <div class="d-flex align-items-center flex-wrap gap-2 justify-content-center">
+                                <a href="{{$loc->ofd_grabfood}}" class="brand-order-online text-decoration-none {{$loc->ofd_grabfood ? 'd-flex' : 'd-none'}} align-items-center justify-content-center p-1 px-2 btn btn-outline-light rounded">
+                                    <img src="{{env('APP_URL')}}/src/images/logo/grabfood.png" alt="Logo Grabfood" class="d-block" style="height:1.5em; object-fit:contain; width:5em">
+                                </a>
+                                <a href="{{$loc->ofd_gofood}}" class="brand-order-online text-decoration-none {{$loc->ofd_gofood ? 'd-flex' : 'd-none'}} align-items-center justify-content-center p-1 px-2 btn btn-outline-light rounded">
+                                    <img src="{{env('APP_URL')}}/src/images/logo/gofood.png" alt="Logo gofood" class="d-block" style="height:1.5em; object-fit:contain; width:5em">
+                                </a>
+                                <a href="{{$loc->ofd_shopeefood}}" class="brand-order-online text-decoration-none {{$loc->ofd_shopeefood ? 'd-flex' : 'd-none'}} align-items-center justify-content-center p-1 px-2 btn btn-outline-light rounded">
+                                    <img src="{{env('APP_URL')}}/src/images/logo/shopeefood.png" alt="Logo shopeefood" class="d-block" style="height:1.5em; object-fit:contain; width:5em">
+                                </a>
+                                <a href="{{$loc->ofd_airasiafood}}" class="brand-order-online text-decoration-none {{$loc->ofd_airasiafood ? 'd-flex' : 'd-none'}} align-items-center justify-content-center p-1 px-2 btn btn-outline-light rounded">
+                                    <img src="{{env('APP_URL')}}/src/images/logo/airasia-food.png" alt="Logo shopeefood" class="d-block" style="height:1.5em; object-fit:contain; width:5em">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div> 
+                @endif
+                
             </div>
             <div class="col-1">
-                <div class="{{count($brand->locations) > 3 ? 'd-flex' : 'd-none'}} align-items-center justify-content-center h-100">
+                @if (count($brand->locations) <= 3)
+                <div class="d-flex d-md-none align-items-center justify-content-center h-100">
                     <div class="next-brand-map d-flex align-items-center justify-content-center p-2 rounded-circle border" style="cursor: pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48">
                             <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="m19 12l12 12l-12 12" />
                         </svg>
                     </div>
                 </div>
+                @else
+                <div class="d-flex align-items-center justify-content-center h-100">
+                    <div class="next-brand-map d-flex align-items-center justify-content-center p-2 rounded-circle border" style="cursor: pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48">
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="m19 12l12 12l-12 12" />
+                        </svg>
+                    </div>
+                </div>
+                @endif
             </div>
             <div class="col-12">
                 <div class="d-flex align-items-center justify-content-center mt-4">
@@ -177,25 +445,6 @@
             </div>
         </div>
         @endif
-    </div>
-</section>
-
-<section class="py-5 bg-light">
-    <div class="container">
-        <div class="row h-100">
-            <div class="col-md-6">
-                <img src="{{Voyager::image(setting('cta.cta_image'))}}" alt="Image Section" class="d-block w-100" style="aspect-ratio:16/9; object-fit:cover">
-            </div>
-            <div class="col-md-6 h-content p-4">
-                <div class="d-flex flex-column align-items-start justify-content-between h-100">
-                    <div>
-                        <h3>{{setting('cta.cta_title')}}</h3>
-                        <p>{{setting('cta.cta_desc')}}</p>
-                    </div>
-                    <a href="{{url(setting('cta.btn_link'))}}" class="btn p-2 px-3 rounded-0 border-0 text-white bg-secondary" style="background-color:{{$brand->brand_color}} !important">{{setting('cta.btn_text')}}</a>
-                </div>
-            </div>
-        </div>
     </div>
 </section>
 

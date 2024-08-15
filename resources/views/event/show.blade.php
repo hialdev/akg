@@ -47,4 +47,22 @@
         </div>
     </div>
 </section>
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row h-100">
+            <div class="col-md-6">
+                <img src="{{Voyager::image(setting('cta.cta_image'))}}" alt="Image Section" class="d-block w-100" style="aspect-ratio:16/9; object-fit:cover">
+            </div>
+            <div class="col-md-6 h-content p-4">
+                <div class="d-flex flex-column align-items-start justify-content-between h-100">
+                    <div>
+                        <h3>{{setting('cta.cta_title')}}</h3>
+                        <p>{{setting('cta.cta_desc')}}</p>
+                    </div>
+                    <a href="{{url(setting('cta.btn_link'))}}" class="btn p-2 px-3 rounded-0 border-0 text-white bg-secondary">{{setting('cta.btn_text')}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 @endsection

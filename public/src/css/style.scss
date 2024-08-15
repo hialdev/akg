@@ -223,9 +223,16 @@
     object-fit: cover;
     > div{
         height: 100vh;
+        // max-height: 100vh;
+        object-fit: cover;
+        // @media (max-width:767px){
+        //     min-height: 83vh;
+        //     max-height: 83vh;
+        // }
         h1{
             max-width: 20em !important;
             text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
     }
     > iframe{
@@ -239,6 +246,10 @@
         min-height: 100vh;
         max-height: 100vh;
         object-fit: cover;
+        // @media (max-width:767px){
+        //     min-height: 83vh;
+        //     max-height: 83vh;
+        // }
     }
 }
 .image-hero{

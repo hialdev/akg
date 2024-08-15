@@ -39,7 +39,7 @@
         @endif
     </div>
     <div class="d-md-none">
-        <nav class="p-3 akg-prm-bg d-flex align-items-center justify-content-between" style="background: {{Route::is('brand.show') ? $brand_color : ''}} !important">
+        <nav class="p-3 {{Route::is('home')? 'bg-transparent position-absolute top-0 start-0 end-0' : 'akg-prm-bg'}} d-flex align-items-center justify-content-between" style="background: {{Route::is('brand.show') ? $brand_color : ''}} !important; z-index:40">
             <div class="">
                 <a href="{{route('home')}}" class="text-decoration-none d-flex align-items-center justify-center">
                     <img src="{{env('APP_URL')}}/src/images/logo/logo-akg-gold.png" alt="Logo AKG Gold" class="d-block" style="{{Route::is('brand.show') ? 'filter:brightness(1000%)' : ''}};max-height:4em;">
