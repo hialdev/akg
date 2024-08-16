@@ -16,7 +16,7 @@
         $video = setting('content.video');
         $video = json_decode($video);
     @endphp
-    @if (count($video) > 0)
+    @if (setting('content.is_jumbotron_video') && $video != null)
     <div class="position-relative video-jumbotron">
         <div class="position-absolute top-0 end-0 start-0 bottom-0">
             <video autoplay muted loop playsinline>
