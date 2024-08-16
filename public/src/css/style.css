@@ -294,7 +294,6 @@
 
 .brand-item .content {
   position: absolute;
-  background: rgba(20, 38, 44, 0.4);
   top: 0;
   left: 0;
   right: 0;
@@ -305,7 +304,7 @@
 }
 .brand-item .content .hovering {
   opacity: 0;
-  padding: 2em;
+  background: rgba(20, 38, 44, 0.4);
 }
 .brand-item .content .hovering img {
   width: 100%;

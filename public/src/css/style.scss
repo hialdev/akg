@@ -311,7 +311,7 @@
         
     .content{
         position: absolute;
-        background: rgba(20, 38, 44, 0.40);
+        // background: rgba(20, 38, 44, 0.40);
         top: 0;
         left: 0;
         right: 0;
@@ -321,7 +321,8 @@
         justify-content: center;
         .hovering{
             opacity:0;
-            padding: 2em;
+            background: rgba(20, 38, 44, 0.40);
+            // padding: 2em;
             img{
                 width:100%;
             }

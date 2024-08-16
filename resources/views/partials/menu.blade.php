@@ -15,18 +15,18 @@
                             $brands = \App\Models\Brand::orderBy('urutan', 'asc')->get();
                         @endphp
                         @foreach ($brands as $brand)
-                        <a href="{{route('brand.show', $brand->slug)}}" class="d-block">
+                        <a href="{{route('brand.show', $brand->slug)}}" class="text-decoration-none text-dark d-b;pck">
                             <div class="brand-item position-relative">
                                 <div class="content">
                                     <div class="hovering position-absolute top-0 bottom-0 start-0 end-0 bg-white akg-sec d-flex align-items-center justify-content-center">
                                         <div>
-                                            <img src="{{Voyager::image($brand->logo)}}" alt="Artisan" class="d-block">
+                                            <img src="{{Voyager::image($brand->bg_image)}}" alt="Artisan {{$brand->title}} image" class="d-block">
                                             <!-- <div class="font-bold akg-prm text-center">{{$brand->title}}</div> -->
                                         </div>
                                     </div>
-                                    <div class="font-bold text-white fs-6">{{$brand->title}}</div>
+                                    {{-- <div class="font-bold text-white fs-5">{{$brand->title}}</div> --}}
                                 </div>
-                                <img src="{{Voyager::image($brand->bg_image)}}" alt="Alt">
+                                <img src="{{Voyager::image($brand->logo)}}" alt="Logo of {{$brand->title}}" style="aspect-ratio:1/1; object-fit:cover">
                             </div>
                         </a>
                         @endforeach

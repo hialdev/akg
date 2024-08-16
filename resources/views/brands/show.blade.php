@@ -46,7 +46,7 @@
     <div class="container py-5">
         <div class="row py-3">
             <div class="col-md-3 mb-4">
-                <img src="{{Voyager::image($brand->logo)}}" alt="Logo {{$brand->title}}" class="d-block w-100 p-3 mx-auto" style="max-width: 10em;">
+                <img src="{{Voyager::image($brand->logo)}}" alt="Logo {{$brand->title}}" class="d-block w-100 p-3 mx-auto" style="max-width: 13em;">
             </div>
             <div class="col-md-6 pe-md-5 mb-5">
                 <h3 class="mb-4">{{$brand->title}}</h3>
