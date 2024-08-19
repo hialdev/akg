@@ -29,7 +29,7 @@
             <div class="col-md-8">
                 <article>
                     <h1>{{$event->title}}</h1>
-                    <img src="{{Voyager::image($event->image)}}" alt="Image {{$event->title}}" class="d-block w-100 my-3" style="aspect-ratio:16/9; object-fit:cover;">
+                    <img src="{{Voyager::image($event->image)}}" alt="Image {{$event->title}}" class="d-block w-100 my-3" style="aspect-ratio:2/2.5; object-fit:cover;">
                     <div class="content">
                         {!! $event->content !!}
                     </div>

@@ -23,7 +23,7 @@
                     <div class="news-page-carousel owl-carousel owl-theme">
                         @foreach ($news as $new)
                             <a class="d-block news-carousel-item" href="{{route('news.show', $new->slug)}}" style="max-width: 20em">
-                                <img src="{{Voyager::image($new->image)}}" alt="" class="d-block mb-2" style="aspect-ratio:3/2; object-fit:cover;">
+                                <img src="{{Voyager::image($new->image)}}" alt="" class="d-block mb-2" style="aspect-ratio:2/2.5; object-fit:cover;">
                                 <div class="text-secondary mb-2">{{ \Carbon\Carbon::parse($new->created_at)->format('d F Y')}}</div>
                                 <h6>{{$new->title}}</h6>
                             </a>
@@ -42,7 +42,7 @@
             <div class="col-md-6 mb-3">
                 <a href="{{route('news.show', $new->slug)}}" class="news-item d-flex align-items-center text-decoration-none text-dark">
                     <div style="height: fit-content">
-                        <img src="{{Voyager::image($new->image)}}" alt="Image {{$new->title}}" class="d-block" style="aspect-ratio:16/9; object-fit:cover;">
+                        <img src="{{Voyager::image($new->image)}}" alt="Image {{$new->title}}" class="d-block" style="aspect-ratio:2/2.5; object-fit:cover;">
                     </div>
                     <div class="p-2 ps-4">
                         <h6>{{$new->title}}</h6>
@@ -64,9 +64,9 @@
             <div class="col-12 mb-5">
                 <div class="d-flex gap-5 flex-column flex-md-row align-items-center">
                     <a href="{{route('news.show',$article_featured->slug)}}" class="text-dark d-block text-decoration-none w-100" style="max-width: 28em">
-                        <img src="{{Voyager::image($article_featured->image)}}" alt="Image Featured Article" class="d-block mb-3 w-100" style="aspect-ratio:16/9;object-fit:cover">
-                        <p class="text-secondary" style="font-size: 13px">{{ \Carbon\Carbon::parse($article_featured->created_at)->format('d F Y')}}</p>
+                        <img src="{{Voyager::image($article_featured->image)}}" alt="Image Featured Article" class="d-block mb-3 w-100" style="aspect-ratio:2/2.5;object-fit:cover">
                         <h6>{{$article_featured->title}}</h6>
+                        <p class="text-secondary" style="font-size: 13px">{{ \Carbon\Carbon::parse($article_featured->created_at)->format('d F Y')}}</p>
                     </a>
                     <div class="row">
                         @foreach ($articles as $article)

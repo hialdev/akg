@@ -40,7 +40,7 @@
             <div class="col-md-8">
                 <article>
                     <h1>{{$news->title}}</h1>
-                    <img src="{{Voyager::image($news->image)}}" alt="Image {{$news->title}}" class="d-block w-100 my-3" style="aspect-ratio:16/9; object-fit:cover;">
+                    <img src="{{Voyager::image($news->image)}}" alt="Image {{$news->title}}" class="d-block w-100 my-3" style="aspect-ratio:2/2.5; object-fit:cover;">
                     <div class="content">
                         {!! $news->content !!}
                     </div>

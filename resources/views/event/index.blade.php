@@ -21,7 +21,7 @@
             @foreach ($events as $event)
             <div class="col-12 border mb-4 p-0">
                 <div class="d-flex flex-column flex-md-row align-items-center h-100">
-                    <img src="{{Voyager::image($event->image)}}" alt="Image Evenet" class="d-block" style="aspect-ratio:16/9; max-width:25em; object-fit:cover;">
+                    <img src="{{Voyager::image($event->image)}}" alt="Image Evenet" class="d-block" style="aspect-ratio:2/2.5; max-width:25em; object-fit:cover;">
                     <div class="p-5 w-100 h-100 d-flex flex-column justify-content-between">
                         <div>
                             <h2 class="mb-3 fs-5">{{$event->title}}</h2>

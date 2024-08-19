@@ -140,10 +140,10 @@
                     @foreach ($brand->locations as $loc)
                     <div class="border d-flex flex-column text-center justify-content-center gap-4 p-5">
                         <div>
-                            <img src="{{Voyager::image($loc->store_image)}}" alt="Image of {{$brand->title}} in {{$loc->title}}" class="d-block w-100 rounded-3" style="aspect-ratio:16/9;object-fit:cover;">
+                            <img src="{{Voyager::image($loc->store_image)}}" alt="Image of {{$brand->title}} in {{$loc->title}}" class="d-block w-100 rounded-3" style="aspect-ratio:16/9;object-fit:cover;max-width:20em;">
                         </div>
                         <div>
-                            <h6>{{$loc->title}}</h6>
+                            <h6 style="max-width:20em;" class="text-center">{{$loc->title}}</h6>
                             <p>{{$loc->address}}</p>
                             <a href="{{url($loc->link_gmap)}}" class="d-inline-flex align-items-center gap-2 fw-bold text-decoration-none text-dark border-bottom border-dark" style="color: {{$brand->brand_color}} !important">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
