@@ -15,9 +15,8 @@ class BrandController extends Controller
 
     public function show($slug){
         $brand = Brand::where('slug', $slug)->firstOrFail();
-        $gmenus = BrandMenu::where('brand_id', $brand->id)->where('location_id', null)->get();
-        $lmenus = Location::where('brand_id', $brand->id)->with('brandMenus')->get();
+        $menus = BrandMenu::where('brand_id', $brand->id)->get();
 
-        return view('brands.show', compact('brand','gmenus', 'lmenus'));
+        return view('brands.show', compact('brand','menus'));
     }
 }

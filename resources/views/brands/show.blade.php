@@ -281,7 +281,7 @@
                     @foreach ($brand->locations as $loc)
                     <div class="border d-flex flex-column text-center justify-content-center gap-4 p-5">
                         <div>
-                            <img src="{{Voyager::image($loc->store_image)}}" alt="Image of {{$brand->title}} in {{$loc->title}}" class="d-block w-100 rounded-3" style="aspect-ratio:16/9;object-fit:cover;">
+                            <img src="{{Voyager::image($loc->store_image)}}" alt="Image of {{$brand->title}} in {{$loc->title}}" class="d-block w-100 rounded-3" style="aspect-ratio:16/9;object-fit:cover;max-width:20em;">
                         </div>
                         <div>
                             <h6>{{$loc->title}}</h6>
@@ -463,37 +463,17 @@
             </div>
         </div>
         <div class="" style="max-height: 52vh">
-            @if (count($gmenus) > 0)
-            <div class="akg-sec-bg text-white fw-bold p-2 px-4" style="background:{{$brand->brand_color}} !important;">
-                General Menu
-            </div>
-            <div class="p-2 px-4 d-flex align-items-center flex-wrap gap-2">
-                @foreach ($gmenus as $gmenu)
+            @if (count($menus) > 0)
+            <div class="p-3 px-4 d-flex align-items-center flex-wrap gap-2">
+                @foreach ($menus as $gmenu)
                     @php
                     $gfilePath = json_decode($gmenu->file);
                     @endphp
                     <a href="{{ count($gfilePath) > 0 ? Voyager::image($gfilePath[0]->download_link) : $gmenu->link_file }}" target="_blank" class="btn btn-sm btn-outline-secondary rounded-0">{{$gmenu->name}}</a>
                 @endforeach
             </div>
-            @endif
-            @if (count($lmenus) > 0)
-                @foreach ($lmenus as $location)
-                <div class="akg-sec-bg text-white fw-bold p-2 px-4" style="background:{{$brand->brand_color}} !important;">
-                    {{$location->title}}
-                </div>
-                <div class="p-2 px-4 d-flex align-items-center flex-wrap gap-2">
-                    @if ($location->brandMenus->isEmpty())
-                        <p class="m-0 p-2">No Special Menu in This Location</p>
-                    @else
-                        @foreach ($location->brandMenus as $menu)
-                            @php
-                            $filePath = json_decode($menu->file);
-                            @endphp
-                            <a href="{{ count($filePath) > 0 ? Voyager::image($filePath[0]->download_link) : $menu->link_file }}" target="_blank" class="btn btn-sm btn-outline-secondary rounded-0">{{$menu->name}}</a>
-                        @endforeach
-                    @endif
-                </div>
-                @endforeach
+            @else
+            <div class="text-center p-2">No Menu Available</div>
             @endif
         </div>
     </div>
