@@ -1,3 +1,4 @@
+<a href="{{url('/')}}" class="text-white text-uppercase item-menu">Home</a>
 <div class="menu-dropdown">
     <a href="#" class="text-white text-uppercase item-menu">Brand</a>
     <div class="mega-menu">
@@ -38,7 +39,8 @@
 </div>
 <a href="{{route('news')}}" class="text-white text-uppercase item-menu">News</a>
 <a href="{{route('event')}}" class="text-white text-uppercase item-menu">Event</a>
-<div class="menu-dropdown">
+<a href="{{route('about')}}" class="text-white text-uppercase item-menu">Corporate</a>
+{{-- <div class="menu-dropdown">
     <a href="#" class="text-white text-uppercase item-menu">Coorporate</a>
     <div class="mega-menu">
         <div class="mega-menu-box">
@@ -71,4 +73,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}

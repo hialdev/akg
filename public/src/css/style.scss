@@ -257,8 +257,9 @@
     max-height: 100vh;
     object-fit: cover;
     @media (max-width:767px){
-        min-height: 83vh;
-        max-height: 83vh;
+        aspect-ratio:16/9 !important;
+        min-height: auto !important;
+        object-fit: cover;
     }
 }
 //divider

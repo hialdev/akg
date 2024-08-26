@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.corporate')
 @section('seo')
     @php
         $seo = \App\Models\Meta::all()->keyBy('page');
@@ -10,7 +10,7 @@
         'keywords' => $seo->get('about')->keywords ?? setting('seo.seo_key'),
     ])
 @endsection
-@section('content')
+@section('cpt-content')
 <section class="py-5">
     <div class="container">
         <div class="row">

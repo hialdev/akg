@@ -54,7 +54,7 @@
         </div>
     </div>
 </section>
-<section class="py-5">
+{{-- <section class="py-5">
     <div class="container">
         <div class="row">
             <div class="col-12 my-5">
@@ -82,5 +82,5 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 @endsection

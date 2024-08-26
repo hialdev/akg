@@ -238,8 +238,10 @@
 }
 @media (max-width: 767px) {
   .image-hero {
-    min-height: 83vh;
-    max-height: 83vh;
+    aspect-ratio: 16/9 !important;
+    min-height: auto !important;
+    -o-object-fit: cover;
+       object-fit: cover;
   }
 }
 

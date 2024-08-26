@@ -22,7 +22,7 @@
                     <span>{{$career->title}}</span>
                 </div>
             </div>
-            <div class="col-12">
+            <div class="col-md-8">
                 <article>
                     <div class="row mb-4">
                         <div class="col-md-4 mb-3 mb-md-0">
@@ -42,10 +42,6 @@
                             </div>
                         </div>
                     </div>
-                </article>
-            </div>
-            <div class="col-md-8">
-                <article>
                     <div class="content">
                         {!! $career->content !!}
                     </div>

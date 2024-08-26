@@ -3,6 +3,7 @@
         <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0l-4 4m4-4l-4-4" />
     </svg>
 </div>
+<a href="{{url('/')}}" class="text-white text-uppercase item-menu">Home</a>
 <div class="menu-dropdown">
     <a href="#" class="btn-menu-dropdown text-white text-uppercase item-menu d-flex align-items-center justify-content-between">Brand
         <div>
@@ -49,8 +50,9 @@
 </div>
 <a href="{{route('news')}}" class="text-white text-uppercase item-menu">News</a>
 <a href="{{route('event')}}" class="text-white text-uppercase item-menu">Event</a>
-<div class="menu-dropdown">
-    <a href="#" class="btn-menu-dropdown text-white text-uppercase item-menu d-flex align-items-center justify-content-between">Coorporate
+<a href="{{route('about')}}" class="text-white text-uppercase item-menu">Corporate</a>
+{{-- <div class="menu-dropdown">
+    <a href="#" class="btn-menu-dropdown text-white text-uppercase item-menu d-flex align-items-center justify-content-between">Corporate
         <div>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 10l5 5l5-5" />
@@ -88,7 +90,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <div>
     <form action="{{route('search')}}" method="GET">
         <div class="d-flex align-items-center gap-3">

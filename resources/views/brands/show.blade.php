@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-6 pe-md-5 mb-5">
                 <h3 class="mb-4">{{$brand->title}}</h3>
-                <p class="mb-5 text-secondary">{{$brand->meta_desc ?? 'Artisan Kuliner Group Special Brand'}}</p>
+                <p class="mb-5 text-secondary" style="text-align: justify !important">{{$brand->meta_desc ?? 'Artisan Kuliner Group Special Brand'}}</p>
                 {{-- <div class="d-flex align-items-center gap-4">
                     <a href="tel:{{$brand->contact_telp}}" class="p-2 px-3 text-decoration-none" style="background-color: {{ $brand->brand_color ?? '#212121'}}; color:#fff">Book Now</a>
                     <a href="tel:{{$brand->contact_telp}}" class="p-2 px-3 text-decoration-none bg-light text-secondary" style="color: {{$brand->brand_color}} !important">Order Delivery</a>
@@ -158,18 +158,34 @@
                         <div>
                             <h6>Opening Hour</h6>
                             @php
-                                $string = $loc->opening_time;
-                            
-                                // Memisahkan berdasarkan tanda kurung
-                                $parts = explode('(', $string);
-                            
-                                // Bagian hari
-                                $days = trim($parts[0]);
-                            
-                                // Bagian waktu, hapus tanda kurung tutup
-                                $time = isset($parts[1]) ? trim(rtrim($parts[1], ')')) : '';
+                                $time = $loc->opening_time;
+
+                                // Memisahkan data berdasarkan koma menjadi array
+                                $timeSlots = explode(',', $time);
+
+                                // Array untuk menyimpan hasil pemisahan hari dan waktu
+                                $parsedTimeSlots = [];
+
+                                foreach ($timeSlots as $slot) {
+                                    // Memisahkan berdasarkan tanda kurung
+                                    $parts = explode('(', trim($slot));
+
+                                    // Bagian hari, pastikan tidak ada spasi berlebih
+                                    $days = trim($parts[0]);
+
+                                    // Bagian waktu, hapus tanda kurung tutup dan spasi berlebih
+                                    $time = isset($parts[1]) ? trim(rtrim($parts[1], ')')) : '';
+
+                                    // Menyimpan hari dan waktu dalam array asosiatif
+                                    $parsedTimeSlots[] = [
+                                        'days' => $days,
+                                        'time' => $time
+                                    ];
+                                }
                             @endphp
-                            <p>{{$days}}<br />({{$time}})</p>
+                            @foreach ($parsedTimeSlots as $date)
+                            <p class="mb-0">{{$date['days']}}<br />({{$date['time']}})</p>
+                            @endforeach
                         </div>
                         <div>
                             <h6>Contact Us</h6>
@@ -202,6 +218,11 @@
                                 </a>
                             </div>
                         </div>
+                        @if ($loc->book_now)
+                        <div>
+                            <a href="{{$loc->book_now}}" class="p-2 px-3 text-decoration-none" style="background-color: {{ $brand->brand_color ?? '#212121'}}; color:#fff">Book Now</a>
+                        </div>
+                        @endif
                     </div>
                     @endforeach
                 </div>
@@ -211,7 +232,7 @@
                     @foreach ($brand->locations as $loc)
                     <div class="border d-flex flex-column text-center justify-content-center gap-4 p-5">
                         <div>
-                            <img src="{{Voyager::image($loc->store_image)}}" alt="Image of {{$brand->title}} in {{$loc->title}}" class="d-block w-100 rounded-3" style="aspect-ratio:16/9;object-fit:cover;">
+                            <img src="{{Voyager::image($loc->store_image)}}" alt="Image of {{$brand->title}} in {{$loc->title}}" class="d-block w-100 rounded-3" style="aspect-ratio:16/9;object-fit:cover;max-width:20em">
                         </div>
                         <div>
                             <h6>{{$loc->title}}</h6>
@@ -229,18 +250,34 @@
                         <div>
                             <h6>Opening Hour</h6>
                             @php
-                                $string = $loc->opening_time;
-                            
-                                // Memisahkan berdasarkan tanda kurung
-                                $parts = explode('(', $string);
-                            
-                                // Bagian hari
-                                $days = trim($parts[0]);
-                            
-                                // Bagian waktu, hapus tanda kurung tutup
-                                $time = isset($parts[1]) ? trim(rtrim($parts[1], ')')) : '';
+                                $time = $loc->opening_time;
+
+                                // Memisahkan data berdasarkan koma menjadi array
+                                $timeSlots = explode(',', $time);
+
+                                // Array untuk menyimpan hasil pemisahan hari dan waktu
+                                $parsedTimeSlots = [];
+
+                                foreach ($timeSlots as $slot) {
+                                    // Memisahkan berdasarkan tanda kurung
+                                    $parts = explode('(', trim($slot));
+
+                                    // Bagian hari, pastikan tidak ada spasi berlebih
+                                    $days = trim($parts[0]);
+
+                                    // Bagian waktu, hapus tanda kurung tutup dan spasi berlebih
+                                    $time = isset($parts[1]) ? trim(rtrim($parts[1], ')')) : '';
+
+                                    // Menyimpan hari dan waktu dalam array asosiatif
+                                    $parsedTimeSlots[] = [
+                                        'days' => $days,
+                                        'time' => $time
+                                    ];
+                                }
                             @endphp
-                            <p>{{$days}}<br />({{$time}})</p>
+                            @foreach ($parsedTimeSlots as $date)
+                            <p class="mb-0">{{$date['days']}}<br />({{$date['time']}})</p>
+                            @endforeach
                         </div>
                         <div>
                             <h6>Contact Us</h6>
@@ -273,6 +310,11 @@
                                 </a>
                             </div>
                         </div>
+                        @if ($loc->book_now)
+                        <div>
+                            <a href="{{$loc->book_now}}" class="p-2 px-3 text-decoration-none" style="background-color: {{ $brand->brand_color ?? '#212121'}}; color:#fff">Book Now</a>
+                        </div>
+                        @endif
                     </div>
                     @endforeach
                 </div>
@@ -299,18 +341,34 @@
                         <div>
                             <h6>Opening Hour</h6>
                             @php
-                                $string = $loc->opening_time;
-                            
-                                // Memisahkan berdasarkan tanda kurung
-                                $parts = explode('(', $string);
-                            
-                                // Bagian hari
-                                $days = trim($parts[0]);
-                            
-                                // Bagian waktu, hapus tanda kurung tutup
-                                $time = isset($parts[1]) ? trim(rtrim($parts[1], ')')) : '';
+                                $time = $loc->opening_time;
+
+                                // Memisahkan data berdasarkan koma menjadi array
+                                $timeSlots = explode(',', $time);
+
+                                // Array untuk menyimpan hasil pemisahan hari dan waktu
+                                $parsedTimeSlots = [];
+
+                                foreach ($timeSlots as $slot) {
+                                    // Memisahkan berdasarkan tanda kurung
+                                    $parts = explode('(', trim($slot));
+
+                                    // Bagian hari, pastikan tidak ada spasi berlebih
+                                    $days = trim($parts[0]);
+
+                                    // Bagian waktu, hapus tanda kurung tutup dan spasi berlebih
+                                    $time = isset($parts[1]) ? trim(rtrim($parts[1], ')')) : '';
+
+                                    // Menyimpan hari dan waktu dalam array asosiatif
+                                    $parsedTimeSlots[] = [
+                                        'days' => $days,
+                                        'time' => $time
+                                    ];
+                                }
                             @endphp
-                            <p>{{$days}}<br />({{$time}})</p>
+                            @foreach ($parsedTimeSlots as $date)
+                            <p class="mb-0">{{$date['days']}}<br />({{$date['time']}})</p>
+                            @endforeach
                         </div>
                         <div>
                             <h6>Contact Us</h6>
@@ -343,6 +401,11 @@
                                 </a>
                             </div>
                         </div>
+                        @if ($loc->book_now)
+                        <div>
+                            <a href="{{$loc->book_now}}" class="p-2 px-3 text-decoration-none" style="background-color: {{ $brand->brand_color ?? '#212121'}}; color:#fff">Book Now</a>
+                        </div>
+                        @endif
                     </div>
                     @endforeach
                 </div>
@@ -369,18 +432,34 @@
                         <div>
                             <h6>Opening Hour</h6>
                             @php
-                                $string = $loc->opening_time;
-                            
-                                // Memisahkan berdasarkan tanda kurung
-                                $parts = explode('(', $string);
-                            
-                                // Bagian hari
-                                $days = trim($parts[0]);
-                            
-                                // Bagian waktu, hapus tanda kurung tutup
-                                $time = isset($parts[1]) ? trim(rtrim($parts[1], ')')) : '';
+                                $time = $loc->opening_time;
+
+                                // Memisahkan data berdasarkan koma menjadi array
+                                $timeSlots = explode(',', $time);
+
+                                // Array untuk menyimpan hasil pemisahan hari dan waktu
+                                $parsedTimeSlots = [];
+
+                                foreach ($timeSlots as $slot) {
+                                    // Memisahkan berdasarkan tanda kurung
+                                    $parts = explode('(', trim($slot));
+
+                                    // Bagian hari, pastikan tidak ada spasi berlebih
+                                    $days = trim($parts[0]);
+
+                                    // Bagian waktu, hapus tanda kurung tutup dan spasi berlebih
+                                    $time = isset($parts[1]) ? trim(rtrim($parts[1], ')')) : '';
+
+                                    // Menyimpan hari dan waktu dalam array asosiatif
+                                    $parsedTimeSlots[] = [
+                                        'days' => $days,
+                                        'time' => $time
+                                    ];
+                                }
                             @endphp
-                            <p>{{$days}}<br />({{$time}})</p>
+                            @foreach ($parsedTimeSlots as $date)
+                            <p class="mb-0">{{$date['days']}}<br />({{$date['time']}})</p>
+                            @endforeach
                         </div>
                         <div>
                             <h6>Contact Us</h6>
@@ -413,6 +492,11 @@
                                 </a>
                             </div>
                         </div>
+                        @if ($loc->book_now)
+                        <div>
+                            <a href="{{$loc->book_now}}" class="p-2 px-3 text-decoration-none" style="background-color: {{ $brand->brand_color ?? '#212121'}}; color:#fff">Book Now</a>
+                        </div>
+                        @endif
                     </div>
                     @endforeach
                 </div> 

@@ -107,8 +107,8 @@
                 <div>
                     <div class="news-carousel owl-carousel owl-theme">
                         @foreach ($news as $new)
-                            <a class="d-block news-carousel-item" href="">
-                                <img src="{{Voyager::image($new->image)}}" alt="" class="d-block mb-2" style="aspect-ratio:3/2; object-fit:cover">
+                            <a class="d-block news-carousel-item" href="{{route('news.show', $new->slug)}}">
+                                <img src="{{Voyager::image($new->image)}}" alt="Image of {{$new->title}}" class="d-block mb-2" style="aspect-ratio:2/2.5; object-fit:cover">
                                 <div class="text-secondary mb-2">{{ \Carbon\Carbon::parse($new->created_at)->format('d F Y');}}</div>
                                 <h5>{{$new->title}}</h5>
                             </a>

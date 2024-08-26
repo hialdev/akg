@@ -55,9 +55,10 @@
                 </div>
             </div>
             <div class="col-6 mb-4 col-lg-3">
-                <h5 class="mb-3">News</h5>
+                <h5 class="mb-3">Updates</h5>
                 <ul class="d-flex flex-column gap-2 list-unstyled">
-                    <li><a href="{{route('news')}}" class="footer-link">Event</a></li>
+                    <li><a href="{{route('news')}}" class="footer-link">News</a></li>
+                    <li><a href="{{route('event')}}" class="footer-link">Event</a></li>
                 </ul>
             </div>
         </div>

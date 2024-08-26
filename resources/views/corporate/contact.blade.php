@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.corporate')
 @section('seo')
     @php
         $seo = \App\Models\Meta::all()->keyBy('page');
@@ -10,8 +10,8 @@
         'keywords' => $seo->get('contact')->keywords ?? setting('seo.seo_key'),
     ])
 @endsection
-@section('content')
-<img src="{{Voyager::image(setting('content.sep_img'))}}" alt="Image Separator" class="w-100 d-block">
+@section('cpt-content')
+{{-- <img src="{{Voyager::image(setting('content.sep_img'))}}" alt="Image Separator" class="w-100 d-block"> --}}
 <section class="py-5">
     <div class="container">
         <div class="row">
