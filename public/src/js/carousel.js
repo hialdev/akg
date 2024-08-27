@@ -23,6 +23,7 @@ $('.hero-carousel').owlCarousel({
     autoplayTimeout:4000,
     autoplayHoverPause:false,
     dots:false,
+    animateOut: 'fadeOut',
     nav:false,
 });
 

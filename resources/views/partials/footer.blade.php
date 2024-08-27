@@ -12,7 +12,7 @@
                 <h5 class="mb-3">Brands</h5>
                 <ul class="d-flex flex-column gap-2 list-unstyled">
                     @php
-                      $brand_links = \App\Models\Brand::all();
+                      $brand_links = \App\Models\Brand::orderBy('urutan', 'asc')->get();
                     @endphp
                     @foreach($brand_links as $brd)
                     <li><a href="{{route('brand.show', $brd->slug)}}" class="footer-link">{{$brd->title}}</a></li>

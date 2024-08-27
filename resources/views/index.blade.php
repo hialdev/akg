@@ -124,7 +124,7 @@
     <div class="container py-5">
         <div class="text-center">
             <h2 class="akg-sec">About Us</h2>
-            <p class="text-secondary">{{setting('content.home_about')}}, <a href="{{route('about')}}" class="akg-sec btn p-0">Read More...</a></p>
+            <p class="text-secondary">{{setting('content.home_about')}}, <a href="{{route('corporate')}}" class="akg-sec btn p-0">Read More...</a></p>
         </div>
     </div>
     <img src="{{Voyager::image(setting('content.sep_img'))}}" alt="Image Seperator" class="d-block w-100">
