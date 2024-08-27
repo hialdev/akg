@@ -73,7 +73,7 @@
 <div class="modal-search p-3 position-fixed top-0 end-0 start-0 bottom-0 d-none align-items-center justify-content-center" style="background-color:#2121216b;z-index: 99999">
     <div class="position-relative p-4 bg-white" style="max-width: 30em">
         <div class="fs-5 fw-semibold">Search</div>
-        <p>Find article, news, brand, event, or career on Artisan Kuliner Group Site</p>
+        <p>Find news, brand, event, or career on Artisan Kuliner Group Site</p>
         <form action="{{route('search')}}" method="GET">
             <div class="d-flex align-items-center gap-3">
                 <input type="text" name="q" minlength="4" class="form-control border-2 outline-dark rounded-0 p-2 px-3 border-dark" placeholder="Find with min. 4 letters">

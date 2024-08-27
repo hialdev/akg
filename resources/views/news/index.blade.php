@@ -52,8 +52,20 @@
             </div>
             @endforeach
         </div>
+
+        @php
+            $newOffset = $offset + $limit;
+        @endphp
+
+        <div class="text-center">
+            @if($newOffset < $totalNews)
+                <a href="{{ route('news', ['offset' => $newOffset]) }}" class="btn btn-outline-secondary my-4 rounded-0">Load More</a>
+            @endif
+        </div>
     </div>
 </section>
+
+
 {{-- <section class="py-5">
     <div class="container">
         <div class="row">
