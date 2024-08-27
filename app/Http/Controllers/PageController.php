@@ -21,9 +21,10 @@ class PageController extends Controller
         return view('index', compact('brands','news', 'heros'));
     }
 
-    public function about(){
+    public function corporate(){
         $teams = Team::all();
-        return view('corporate.about', compact('teams'));
+        $careers = Career::paginate(10);
+        return view('corporate.index', compact('teams', 'careers'));
     }
 
     public function contact(){

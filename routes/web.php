@@ -20,7 +20,7 @@ use TCG\Voyager\Facades\Voyager;
 */
 
 Route::get('/', [PageController::class, 'index'])->name('home');
-Route::get('/about', [PageController::class, 'about'])->name('about');
+Route::get('/corporate', [PageController::class, 'corporate'])->name('corporate');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::get('/search', [PageController::class, 'search'])->name('search');
 Route::get('/career', [CareerController::class, 'index'])->name('career');

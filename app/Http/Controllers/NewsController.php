@@ -11,9 +11,7 @@ class NewsController extends Controller
     public function index(){
         $news = News::latest()->limit(4)->get();
         $news_cards = News::where('featured',1)->latest()->limit(4)->get();
-        $article_featured = Article::where('featured',1)->latest()->first();
-        $articles = Article::where('id','!=',$article_featured->id)->latest()->limit(6)->get();
-        return view('news.index', compact('news','news_cards', 'article_featured', 'articles'));
+        return view('news.index', compact('news','news_cards'));
     }
 
     public function show($slug){
