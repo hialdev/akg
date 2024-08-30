@@ -22,6 +22,7 @@ use TCG\Voyager\Facades\Voyager;
 Route::get('/', [PageController::class, 'index'])->name('home');
 Route::get('/corporate', [PageController::class, 'corporate'])->name('corporate');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+Route::post('/contact', [PageController::class, 'send'])->name('contact.send');
 Route::get('/search', [PageController::class, 'search'])->name('search');
 Route::get('/career', [CareerController::class, 'index'])->name('career');
 Route::get('/career/{slug}', [CareerController::class, 'show'])->name('career.show');

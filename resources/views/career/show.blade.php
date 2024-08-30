@@ -37,7 +37,7 @@
                                     <h1>{{$career->title}}</h1>
                                 </div>
                                 <div>
-                                    <a href="" class="btn p-2 px-3 akg-sec-bg text-white rounded-0">Kirim Lamaran</a>
+                                    <a href="{{$career->apply_link}}" class="btn p-2 px-3 akg-sec-bg text-white rounded-0">Apply Now</a>
                                 </div>
                             </div>
                         </div>
