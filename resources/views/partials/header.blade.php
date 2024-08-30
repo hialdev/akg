@@ -65,7 +65,7 @@
 </header>
 
 <div class="menu-mobile-nav">
-    <div class="d-flex d-md-none flex-column gap-4 position-fixed top-0 end-0 start-0 bottom-0 p-4 bg-dark" style="background:{{Route::is('brand.show') ? $brand_color : setting('site.navbar_bg') ?? ''}} !important;overflow:auto; z-index:999">
+    <div class="d-flex d-md-none flex-column gap-4 position-fixed top-0 end-0 start-0 bottom-0 p-4 bg-dark" style="background:{{Route::is('brand.show') ? setting('site.navbar_bg') : '#14262C'}} !important;overflow:auto; z-index:999">
         @include('partials.mobile-menu', ['brand_color' => $brand_color])
     </div>
 </div>
