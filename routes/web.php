@@ -24,7 +24,7 @@ Route::get('/corporate', [PageController::class, 'corporate'])->name('corporate'
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::post('/contact', [PageController::class, 'send'])->name('contact.send');
 Route::get('/search', [PageController::class, 'search'])->name('search');
-Route::get('/career', [CareerController::class, 'index'])->name('career');
+// Route::get('/career', [CareerController::class, 'index'])->name('career');
 Route::get('/career/{slug}', [CareerController::class, 'show'])->name('career.show');
 Route::get('/brand', [BrandController::class, 'index'])->name('brand');
 Route::get('/brand/{slug}', [BrandController::class, 'show'])->name('brand.show');

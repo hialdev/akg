@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="d-flex align-items-center pb-4 gap-3 border-bottom mb-4">
-                    <a href="{{route('career')}}" class="text-decoration-none akg-sec">CAREER</a>
+                    <a href="{{route('corporate').'#career'}}" class="text-decoration-none akg-sec">CAREER</a>
                     /
                     <span>{{$career->title}}</span>
                 </div>

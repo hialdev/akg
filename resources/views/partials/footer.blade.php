@@ -22,9 +22,9 @@
             <div class="col-6 mb-4 col-lg-3">
                 <h5 class="mb-3">Quick Link</h5>
                 <ul class="d-flex flex-column gap-2 list-unstyled">
-                    <li><a href="{{route('corporate')}}" class="footer-link">About Us</a></li>
-                    <li><a href="{{route('corporate')}}" class="footer-link">Careers</a></li>
-                    <li><a href="{{route('corporate')}}" class="footer-link">Contact Us</a></li>
+                    <li><a href="{{route('corporate').'#about'}}" class="footer-link">About Us</a></li>
+                    <li><a href="{{route('corporate').'#career'}}" class="footer-link">Careers</a></li>
+                    <li><a href="{{route('corporate').'#contact'}}" class="footer-link">Contact Us</a></li>
                 </ul>
                 <div class="d-flex align-items-center gap-2">
                     @if (setting('social-media.smlink_fb'))
