@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class CareerController extends Controller
 {
     public function index(){
-        $careers = Career::paginate(10);
+        $careers = Career::orderBy('created_at', 'desc')->paginate(10);
         return view('career.index', compact('careers'));
     }
 
