@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\EventController;
@@ -28,6 +29,8 @@ Route::get('/search', [PageController::class, 'search'])->name('search');
 Route::get('/career/{slug}', [CareerController::class, 'show'])->name('career.show');
 Route::get('/brand', [BrandController::class, 'index'])->name('brand');
 Route::get('/brand/{slug}', [BrandController::class, 'show'])->name('brand.show');
+Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('/news', [NewsController::class, 'index'])->name('news');
 Route::get('/news/{slug}', [NewsController::class, 'show'])->name('news.show');
 Route::get('/event', [EventController::class, 'index'])->name('event');

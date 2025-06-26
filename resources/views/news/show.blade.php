@@ -54,12 +54,6 @@
                     <p class="mb-5">{{\Carbon\Carbon::parse($ns->created_at)->format('d F Y')}}</p>
                 </a>
                 @endforeach
-                @foreach ($article_suggests as $as)
-                <a href="{{route('news.show', $as->slug)}}" class="d-block text-dark text-decoration-none border-bottom mb-5">
-                    <h6 class="mb-4">{{$as->title}}</h6>
-                    <p class="mb-5">{{\Carbon\Carbon::parse($as->created_at)->format('d F Y')}}</p>
-                </a>
-                @endforeach
             </div>
         </div>
     </div>
