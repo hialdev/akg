@@ -18,6 +18,17 @@
 
     <!-- Internal CSS -->
     <link rel="stylesheet" href="{{env('APP_URL')}}/src/css/style.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RE9F8GH8QC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-RE9F8GH8QC');
+    </script>
+
 </head>
 <body>
 

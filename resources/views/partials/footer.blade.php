@@ -3,9 +3,9 @@
         <div class="row">
             <div class="col-6 mb-4 col-lg-3">
             @if (strlen(setting('site.logo_footer')) > 2)
-                <img src="{{Voyager::image(setting('site.logo_footer'))}}" alt="AKG Footer Logo" class="d-block w-100" style="max-width: 10em">
+                <img src="{{Voyager::image(setting('site.logo_footer'))}}" alt="AKG Footer Logo" class="d-block w-100" style="max-width: {{ setting('site.footer_size')??'10em'}}">
             @else
-                <img src="{{env('APP_URL')}}/src/images/logo/logo-akg.svg" alt="AKG Footer Logo" class="d-block w-100" style="max-width: 10em">
+                <img src="{{env('APP_URL')}}/src/images/logo/logo-akg.svg" alt="AKG Footer Logo" class="d-block w-100" style="max-width: {{ setting('site.footer_size')?? '10em'}}">
             @endif
             </div>
             <div class="col-6 mb-4 col-lg-3">

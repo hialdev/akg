@@ -18,14 +18,14 @@ class PageController extends Controller
     public function index(){
         $heros = Jumbotron::where('used',1)->latest()->get();
         $brands = Brand::orderBy('urutan', 'asc')->get();
-        $news = News::limit(4)->get();
+        $news = News::latest()->limit(4)->get();
         
         return view('index', compact('brands','news', 'heros'));
     }
 
     public function corporate(){
         $teams = Team::all();
-        $careers = Career::paginate(10);
+        $careers = Career::latest()->paginate(10);
         return view('corporate.index', compact('teams', 'careers'));
     }
 

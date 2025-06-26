@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class EventController extends Controller
 {
     public function index(){
-        $events = Event::all();
+        $events = Event::latest()->get();
         return view('event.index', compact('events'));
     }
 
