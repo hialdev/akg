@@ -37,7 +37,7 @@
         </div>
     </div>
 </div>
-{{-- <a href="{{route('blog')}}" class="text-white text-uppercase item-menu">Blog</a> --}}
+<a href="{{route('blog')}}" class="text-white text-uppercase item-menu">Blog</a>
 <a href="{{route('news')}}" class="text-white text-uppercase item-menu">News</a>
 <a href="{{route('event')}}" class="text-white text-uppercase item-menu">Event</a>
 <a href="{{route('corporate')}}" class="text-white text-uppercase item-menu">Corporate</a>
