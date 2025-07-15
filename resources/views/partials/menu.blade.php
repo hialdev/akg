@@ -16,7 +16,7 @@
                             $brands = \App\Models\Brand::orderBy('urutan', 'asc')->get();
                         @endphp
                         @foreach ($brands as $brand)
-                        <a href="{{route('brand.show', $brand->slug)}}" class="text-decoration-none text-dark d-b;pck">
+                        <a data-aos="fade-down" href="{{route('brand.show', $brand->slug)}}" class="text-decoration-none text-dark d-b;pck">
                             <div class="brand-item position-relative">
                                 <div class="content">
                                     <div class="hovering position-absolute top-0 bottom-0 start-0 end-0 bg-white akg-sec d-flex align-items-center justify-content-center">
