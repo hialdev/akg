@@ -47,7 +47,7 @@
     </div>
     @endif
 </section>
-<section class="py-5" id="explore">
+<section class="py-5" data-aos="fade-up" id="explore">
     <div class="container py-5">
         <div class="row">
             <div class="col-12 text-center">
@@ -58,7 +58,7 @@
         </div>
     </div>
 </section>
-<section class="bg-light h-100">
+<section data-aos="zoom-out-up" class="bg-light h-100">
     <div class="container-fluid">
         <div class="row align-items-center">
             <div class="col-lg-2 p-5 text-center text-md-start">
@@ -92,7 +92,7 @@
 <section class="py-5">
     <div class="container-fluid py-5">
         <div class="row align-items-center">
-            <div class="col-lg-4 p-5">
+            <div class="col-lg-4 p-5" data-aos="fade-right">
                 <h2>{{setting('content.home_news_title')}}</h2>
                 <hr class="divider">
                 <p class="text-secondary">{{setting('content.home_news_desc')}}</p>
@@ -107,7 +107,7 @@
                 <div>
                     <div class="news-carousel owl-carousel owl-theme">
                         @foreach ($news as $new)
-                            <a class="d-block news-carousel-item" href="{{route('news.show', $new->slug)}}">
+                            <a class="d-block news-carousel-item" data-aos="fade-left" href="{{route('news.show', $new->slug)}}">
                                 <img src="{{Voyager::image($new->image)}}" alt="Image of {{$new->title}}" class="d-block mb-2" style="aspect-ratio:2/2.5; object-fit:cover">
                                 <div class="text-secondary mb-2">{{ \Carbon\Carbon::parse($new->created_at)->format('d F Y');}}</div>
                                 <h5>{{$new->title}}</h5>
@@ -121,7 +121,10 @@
     </div>
 </section>
 <section class="border-top py-5">
-    <div class="container py-5">
+    <div class="container py-5"
+         data-aos="fade-up"
+         data-aos-anchor-placement="center-bottom"
+      >
         <div class="text-center">
             <h2 class="akg-sec">About Us</h2>
             <p class="text-secondary mx-auto" style="max-width:50em;" >{{setting('content.home_about')}}, <a href="{{route('corporate').'#about'}}" class="akg-sec btn p-0">Read More...</a></p>

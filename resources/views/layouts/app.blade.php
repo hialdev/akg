@@ -15,6 +15,7 @@
     <!-- Owl Carousel 2 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <!-- Internal CSS -->
     <link rel="stylesheet" href="{{env('APP_URL')}}/src/css/style.css">
@@ -67,6 +68,9 @@
     <!-- Internal JS -->
     <script src="{{env('APP_URL')}}/src/js/carousel.js"></script>
     <script src="{{env('APP_URL')}}/src/js/script.js"></script>
-
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+       AOS.init();
+    </script>
 </body>
 </html>

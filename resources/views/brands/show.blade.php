@@ -43,7 +43,7 @@
 </section>
 
 <section>
-    <div class="container py-5">
+    <div data-aos="fade-up" class="container py-5">
         <div class="row py-3">
             <div class="col-md-3 mb-4">
                 <img src="{{Voyager::image($brand->logo)}}" alt="Logo {{$brand->title}}" class="d-block w-100 p-3 mx-auto" style="max-width: 13em;">
@@ -109,7 +109,7 @@
 
 </section>
 
-<section class="py-5">
+<section data-aos="fade-up" class="py-5">
     <div class="container-fluid">
         @if (count($brand->locations) > 0)
         <div class="row">

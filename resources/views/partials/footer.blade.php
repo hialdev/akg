@@ -1,4 +1,6 @@
-<footer class="position-relative py-5">
+<footer data-aos="fade-up"
+     data-aos-anchor-placement="bottom-bottom"
+     class="position-relative py-5">
     <div class="container">
         <div class="row">
             <div class="col-6 mb-4 col-lg-3">

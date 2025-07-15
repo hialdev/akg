@@ -22,7 +22,7 @@
                 <div class="mb-4">
                     <div class="news-page-carousel owl-carousel owl-theme">
                         @foreach ($news as $new)
-                            <a class="d-block news-carousel-item" href="{{route('blog.show', $new->slug)}}" style="max-width: 20em">
+                            <a data-aos="fade-up" class="d-block news-carousel-item" href="{{route('blog.show', $new->slug)}}" style="max-width: 20em">
                                 <img src="{{Voyager::image($new->image)}}" alt="" class="d-block mb-2" style="aspect-ratio:2/2.5; object-fit:cover;">
                                 <div class="text-secondary mb-2">{{ \Carbon\Carbon::parse($new->created_at)->format('d F Y')}}</div>
                                 <h6>{{$new->title}}</h6>
@@ -40,7 +40,7 @@
         <div class="row">
             @foreach ($news_cards as $new)
             <div class="col-md-6 mb-3">
-                <a href="{{route('blog.show', $new->slug)}}" class="news-item d-flex align-items-center text-decoration-none text-dark">
+                <a data-aos="fade-up" href="{{route('blog.show', $new->slug)}}" class="news-item d-flex align-items-center text-decoration-none text-dark">
                     <div style="height: fit-content">
                         <img src="{{Voyager::image($new->image)}}" alt="Image {{$new->title}}" class="d-block" style="aspect-ratio:2/2.5; object-fit:cover;">
                     </div>
