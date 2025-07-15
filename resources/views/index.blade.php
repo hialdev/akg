@@ -11,7 +11,7 @@
     ])
 @endsection
 @section('content')
-<section>
+<section data-aos="zoom-out-down">
     @php
         $video = setting('content.video');
         $video = json_decode($video);
