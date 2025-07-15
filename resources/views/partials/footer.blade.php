@@ -1,4 +1,4 @@
-<footer data-aos="fade-up"
+<footer data-aos="zoom-in-out"
      data-aos-anchor-placement="bottom-bottom"
      class="position-relative py-5">
     <div class="container">

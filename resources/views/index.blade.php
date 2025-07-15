@@ -11,7 +11,7 @@
     ])
 @endsection
 @section('content')
-<section data-aos="zoom-out-down">
+<section data-aos="zoom-out-down" data-aos-duration="3000">
     @php
         $video = setting('content.video');
         $video = json_decode($video);
@@ -47,7 +47,7 @@
     </div>
     @endif
 </section>
-<section class="py-5" data-aos="fade-up" id="explore">
+<section class="py-5" data-aos="fade-up" data-aos-duration="3000" id="explore">
     <div class="container py-5">
         <div class="row">
             <div class="col-12 text-center">
@@ -58,7 +58,7 @@
         </div>
     </div>
 </section>
-<section data-aos="zoom-out-up" class="bg-light h-100">
+<section data-aos="zoom-out-up" data-aos-duration="3000" class="bg-light h-100">
     <div class="container-fluid">
         <div class="row align-items-center">
             <div class="col-lg-2 p-5 text-center text-md-start">
@@ -92,7 +92,7 @@
 <section class="py-5">
     <div class="container-fluid py-5">
         <div class="row align-items-center">
-            <div class="col-lg-4 p-5" data-aos="fade-right">
+            <div class="col-lg-4 p-5" data-aos="fade-right" data-aos-duration="3000">
                 <h2>{{setting('content.home_news_title')}}</h2>
                 <hr class="divider">
                 <p class="text-secondary">{{setting('content.home_news_desc')}}</p>
@@ -107,7 +107,7 @@
                 <div>
                     <div class="news-carousel owl-carousel owl-theme">
                         @foreach ($news as $new)
-                            <a class="d-block news-carousel-item" data-aos="fade-left" href="{{route('news.show', $new->slug)}}">
+                            <a class="d-block news-carousel-item" data-aos="fade-left" data-aos-duration="3000" href="{{route('news.show', $new->slug)}}">
                                 <img src="{{Voyager::image($new->image)}}" alt="Image of {{$new->title}}" class="d-block mb-2" style="aspect-ratio:2/2.5; object-fit:cover">
                                 <div class="text-secondary mb-2">{{ \Carbon\Carbon::parse($new->created_at)->format('d F Y');}}</div>
                                 <h5>{{$new->title}}</h5>
@@ -124,6 +124,7 @@
     <div class="container py-5"
          data-aos="fade-up"
          data-aos-anchor-placement="center-bottom"
+         data-aos-duration="3000"
       >
         <div class="text-center">
             <h2 class="akg-sec">About Us</h2>

@@ -14,10 +14,10 @@
 <section class="py-5" id="about">
     <div class="container">
         <div class="row">
-            <div data-aos="fade-up" class="col-12 mb-5">
+            <div data-aos="fade-up" data-aos-duration="3000" class="col-12 mb-5">
                 <img src="{{Voyager::image(setting('content.about_image'))}}" alt="Image About" class="d-block w-100" style="aspect-ratio:16/9; object-fit:cover;">
             </div>
-            <div data-aos="fade-up" class="col-12 text-center mb-5">
+            <div data-aos="fade-up" data-aos-duration="3000" class="col-12 text-center mb-5">
                 <h1 class="mb-4 fs-2">{{setting('content.about_title')}}</h1>
                 <div class="content">
                     {!! setting('content.about_content') !!}
@@ -61,7 +61,7 @@
                 <h1 class="mb-4">{{setting('content.career_title')}}</h1>
                 <div class="row">
                     @foreach ($careers as $career)
-                    <div data-aos="fade-up" class="col-md-4 mb-4">
+                    <div data-aos="fade-up" data-aos-duration="3000" class="col-md-4 mb-4">
                         <a href="{{route('career.show', $career->slug)}}" class="career-item d-block text-decoration-none text-dark">
                             <div class="position-relative overflow-hidden">
                                 <img src="{{Voyager::image($career->image)}}" alt="Image {{$career->title}} Career" class="d-block w-100" style="aspect-ratio:1/1; object-fit:cover;">
@@ -93,11 +93,11 @@
 <section class="py-5" id="contact">
     <div class="container">
         <div class="row">
-            <div data-aos="fade-right" class="col-md-6 pe-md-5">
+            <div data-aos="fade-right" data-aos-duration="3000" class="col-md-6 pe-md-5">
                 <h1 class="mb-3">{{setting('content.contact_title')}}</h1>
                 <p>{{setting('content.contact_desc')}}</p>
             </div>
-            <div data-aos="fade-left" class="col-md-6">
+            <div data-aos="fade-left" data-aos-duration="3000" class="col-md-6">
                 <div class="p-5 bg-light">
                     {{-- Alert Success --}}
                     @if(session('success'))
