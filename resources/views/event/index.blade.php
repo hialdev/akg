@@ -14,7 +14,7 @@
 <section class="py-5">
     <div class="container">
         <div class="row">
-            <div data-aos="fade-up" data-aos-duration="3000" class="col-md-6 mb-4">
+            <div data-aos="fade-up" data-aos-duration="{{setting('site.duration')}}" class="col-md-6 mb-4">
                 <h1>{{setting('content.event_title')}}</h1>
                 <p>{{setting('content.event_desc')}}</p>
                 <div class="d-flex ">
@@ -35,7 +35,7 @@
             </div>
 
             @foreach ($events as $event)
-            <div data-aos="fade-up" data-aos-duration="3000" class="col-12 border mb-4 p-0">
+            <div data-aos="fade-up" data-aos-duration="{{setting('site.duration')}}" class="col-12 border mb-4 p-0">
                 <div class="d-flex flex-column flex-md-row align-items-center h-100">
                     <img src="{{Voyager::image($event->image)}}" alt="Image Evenet" class="d-block w-100" style="aspect-ratio:2/2.5; max-width:25em; object-fit:cover;">
                     <div class="p-5 w-100 h-100 d-flex flex-column justify-content-between">
@@ -60,7 +60,7 @@
     </div>
 </section>
 
-<section data-aos="zoom-in-up" data-aos-duration="3000" class="py-5 bg-light">
+<section data-aos="zoom-in-up" data-aos-duration="{{setting('site.duration')}}" class="py-5 bg-light">
     <div class="container">
         <div class="row h-100">
             <div class="col-md-6">
