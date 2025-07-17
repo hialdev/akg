@@ -1,5 +1,5 @@
-<footer data-aos="zoom-in-out"
-     data-aos-anchor-placement="bottom-bottom"
+<footer data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom"
      class="position-relative py-5">
     <div class="container">
         <div class="row">
